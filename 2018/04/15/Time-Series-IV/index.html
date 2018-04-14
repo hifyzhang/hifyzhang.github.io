@@ -1,0 +1,463 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Fengyu&#39;s Blog">
+    <title>Time Series (IV) - Fengyu&#39;s Blog</title>
+    <meta name="author" content="Fengyu Zhang">
+    
+    
+    
+    <meta name="description" content="这是时间序列的第四章，主要介绍的是时间序列的模型构造步骤，以ARIMA模型为例，介绍了一个简单的案例。 同时，本时间序列这个专题内容已经全部写完。">
+<meta name="keywords" content="Time Series,Analysis">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="Time Series (IV)">
+<meta property="og:url" content="http://yoursite.com/2018/04/15/Time-Series-IV/index.html">
+<meta property="og:site_name" content="Fengyu&#39;s Blog">
+<meta property="og:description" content="这是时间序列的第四章，主要介绍的是时间序列的模型构造步骤，以ARIMA模型为例，介绍了一个简单的案例。 同时，本时间序列这个专题内容已经全部写完。">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:image" content="https://github.com/hifyzhang/mypic/blob/master/time%20series%20arima/result.png?raw=true">
+<meta property="og:updated_time" content="2018-04-14T17:21:14.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Time Series (IV)">
+<meta name="twitter:description" content="这是时间序列的第四章，主要介绍的是时间序列的模型构造步骤，以ARIMA模型为例，介绍了一个简单的案例。 同时，本时间序列这个专题内容已经全部写完。">
+<meta name="twitter:image" content="https://github.com/hifyzhang/mypic/blob/master/time%20series%20arima/result.png?raw=true">
+    
+    
+        
+    
+    
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style-pz4cc6y13wt2trzqa8l3n9v0yykr0sstdaheem7qj628nhjmhp9pfawvqawz.min.css">
+    <!--STYLES END-->
+    
+
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+
+<header id="header" data-behavior="4">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a class="header-title-link" href="/ ">Fengyu&#39;s Blog</a>
+    </div>
+    
+        
+            <a  class="header-right-picture "
+                href="#about">
+        
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+<nav id="sidebar" data-behavior="4">
+    <div class="sidebar-container">
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/ "
+                            
+                            title="首页"
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-home" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">首页</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-categories"
+                            
+                            title="分类"
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-bookmark" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">分类</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-tags"
+                            
+                            title="标签"
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-tags" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">标签</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-archives"
+                            
+                            title="归档"
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-archive" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">归档</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="#about"
+                            
+                            title="关于"
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-question" aria-hidden="true"></i>
+                        <span class="sidebar-button-desc">关于</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+        </ul>
+        
+    </div>
+</nav>
+
+            
+            <div id="main" data-behavior="4"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            Time Series (IV)
+        </h1>
+    
+    
+        <div class="post-meta">
+    <time itemprop="datePublished" datetime="2018-04-15T01:16:59+08:00">
+	
+		    4月 15, 2018
+    	
+    </time>
+    
+</div>
+
+    
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p>这是时间序列的第四章，主要介绍的是时间序列的模型构造步骤，以ARIMA模型为例，介绍了一个简单的案例。</p>
+<p>同时，本时间序列这个专题内容已经全部写完。</p>
+<a id="more"></a>
+<h2 id="四、时间序列分析的基本步骤"><a href="#四、时间序列分析的基本步骤" class="headerlink" title="四、时间序列分析的基本步骤"></a>四、时间序列分析的基本步骤</h2><p>这个基本步骤主要以构建简单的ARIMA模型为主。主要采用的是Python下的numpy，pandas，matplotlib，statsmodels这四个包来进行分析操作。</p>
+<p>（1）<strong>数据的准备</strong>。选择统计口径一致的时间序列数据。</p>
+<p>本文使用的案例数据为1960年至1990年美国WPI物价指数，按照季度进行统计。</p>
+<p><a href="https://github.com/hifyzhang/mypic/blob/master/time%20series%20arima/wpi.csv" target="_blank" rel="noopener">数据地址</a></p>
+<p>导入需要使用的模块：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> statsmodels.tsa.stattools <span class="keyword">import</span> adfuller <span class="keyword">as</span> ADF</span><br><span class="line"><span class="keyword">import</span> statsmodels.tsa.stattools <span class="keyword">as</span> st</span><br><span class="line"><span class="keyword">from</span> statsmodels.tsa.arima_model <span class="keyword">import</span> ARIMA</span><br></pre></td></tr></table></figure>
+<p>读取wpi.csv数据：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># read time series data</span></span><br><span class="line">df = pd.read_csv(<span class="string">'wpi.csv'</span>, index_col = <span class="string">'time'</span>)</span><br><span class="line"><span class="keyword">print</span> df.tail()</span><br><span class="line">df.plot()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p>（2）<strong>平稳性识别与平稳化处理</strong>。观测时间序列数据的散点图、自相关函数、偏自相关函数、ADF单位根检验、趋势变化，对时间序列的平稳性进行识别（一般而言，时间序列都不是平稳序列）。如果数据序列是非平稳的，并且存在一定的增长或下降的趋势，则需要对数据进行差分处理；如果数据存在异方差，则需要对数据进行技术处理，直到处理后的数据的自相关函数值和偏相关函数值无显著地异于零。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ts = df[<span class="string">'wpi'</span>]</span><br><span class="line">diff_df = df.diff().dropna()</span><br><span class="line">diff_ts = diff_df[<span class="string">'wpi'</span>]</span><br><span class="line">adftest = ADF(diff_ts)</span><br><span class="line"><span class="keyword">print</span> adftest</span><br><span class="line">diff_df.plot()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p>通过作图可以发现数据为非平稳数据，进行一阶差分后，通过ADF检验发现，在90%的置信区间下，不存在单位根，数据为平稳数据。</p>
+<p>（3）<strong>模型的选择</strong>。针对平稳序列，根据时间序列模型的识别规则，建立相应的模型。</p>
+<p>对于ARIMA(p,d,q)模型中的p与q，可以通过自相关与偏相关函数图观测得出。选择依据如下：</p>
+<ul>
+<li>若平稳序列的偏相关函数是截尾的，二自相关函数是拖尾的，则可以选择序列适合的AR模型；</li>
+</ul>
+<ul>
+<li>若平稳序列的偏相关函数是拖尾的，而自相关函数是截尾的，则可以选择序列适合的MA模型；</li>
+</ul>
+<ul>
+<li>若平稳序列的偏相关函数和自相关函数均是拖尾的，则序列适合ARMA模型。</li>
+</ul>
+<p>同时，也可以通过赤池信息准则（Akaike Information Criterion，AIC）和贝叶斯信息准则（Bayesian Information Criterion，BIC）。</p>
+<p>AIC是衡量统计模型拟合优良性的一种标准，由日本统计学家赤池弘次在1974年提出，它建立在熵的概念上，提供了权衡估计模型复杂度和拟合数据优良性的标准。BIC与AIC相似，用于模型选择，1978年由Schwarz提出。训练模型时，增加参数数量，也就是增加模型复杂度，会增大似然函数，但是也会导致过拟合现象，针对该问题，AIC和BIC均引入了与模型参数个数相关的惩罚项，BIC的惩罚项比AIC的大，考虑了样本数量，样本数量过多时，可有效防止模型精度过高造成的模型复杂度过高。</p>
+<p>本文这里主要采用的是BIC方式：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">order = st.arma_order_select_ic(diff_ts, max_ar = <span class="number">5</span>, max_ma = <span class="number">5</span>, ic = <span class="string">'bic'</span>)</span><br><span class="line">p_q = order.bic_min_order</span><br><span class="line"><span class="keyword">print</span> <span class="string">'arma(p,q) is '</span>, p_q</span><br></pre></td></tr></table></figure>
+<p>当然，你也可以通过观测自相关函数图与偏自相关函数图来确定：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> statsmodels.graphics.tsaplots <span class="keyword">import</span> plot_acf, plot_pacf</span><br><span class="line">plot_acf(diff_ts)</span><br><span class="line">plot_pacf(diff_ts)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p>我们通过BIC方式得到的p与q的值分别为1，1。</p>
+<p>到此，我们确定利用ARIMA(1,1,1)模型进行拟合。</p>
+<p>（4）<strong>模型拟合</strong>。通过确定好的模型，进行参数估计，检验是否具有统计意义。</p>
+<p>利用ARIMA(1,1,1)进行拟合：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">model = ARIMA(ts, (<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>)).fit()</span><br><span class="line"><span class="keyword">print</span> model.summary()</span><br><span class="line"><span class="keyword">print</span> model.forecast(<span class="number">5</span>)[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+<p>运行结果如下：</p>
+<p><img src="https://github.com/hifyzhang/mypic/blob/master/time%20series%20arima/result.png?raw=true" alt="avatar"></p>
+<p>同样也利用forecast方法，对根据通过检验的模型来进行预测分析。</p>
+
+            
+
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">标签</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/Analysis/">Analysis</a> <a class="tag tag--primary tag--small t-link" href="/tags/Time-Series/">Time Series</a>
+
+            </div>
+        
+        
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/04/15/Time-Series-III/" data-tooltip="Time Series (III)" aria-label="下一篇: Time Series (III)">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Diesen Beitrag teilen">
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/04/15/Time-Series-IV/" title="分享到 Facebook">
+                    <i class="fa fa-facebook-official" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2018/04/15/Time-Series-IV/" title="分享到 Twitter">
+                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2018/04/15/Time-Series-IV/" title="分享到 Google+">
+                    <i class="fa fa-google-plus" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+        
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Nach oben">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+        
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2018 Fengyu Zhang. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/04/15/Time-Series-III/" data-tooltip="Time Series (III)" aria-label="下一篇: Time Series (III)">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Diesen Beitrag teilen">
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/04/15/Time-Series-IV/" title="分享到 Facebook">
+                    <i class="fa fa-facebook-official" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2018/04/15/Time-Series-IV/" title="分享到 Twitter">
+                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2018/04/15/Time-Series-IV/" title="分享到 Google+">
+                    <i class="fa fa-google-plus" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+        
+            
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Nach oben">
+            
+                <i class="fa fa-list" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+    <i id="btn-close-shareoptions" class="fa fa-close"></i>
+    <ul class="share-options">
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/04/15/Time-Series-IV/">
+                    <i class="fa fa-facebook-official" aria-hidden="true"></i><span>分享到 Facebook</span>
+                </a>
+            </li>
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2018/04/15/Time-Series-IV/">
+                    <i class="fa fa-twitter" aria-hidden="true"></i><span>分享到 Twitter</span>
+                </a>
+            </li>
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2018/04/15/Time-Series-IV/">
+                    <i class="fa fa-google-plus" aria-hidden="true"></i><span>分享到 Google+</span>
+                </a>
+            </li>
+        
+    </ul>
+</div>
+
+            
+        </div>
+        
+
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <h4 id="about-card-name">Fengyu Zhang</h4>
+        
+            <div id="about-card-bio"><p>author.bio</p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>author.job</p>
+
+            </div>
+        
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker"></i>
+                <br/>
+                Guangzhou
+            </div>
+        
+    </div>
+</div>
+
+        
+        
+<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
+        <!--SCRIPTS-->
+<script src="/assets/js/script-peofhqjkzcghmndknakluequy1y6owxdwpaqyju9ntl9zxnk7rdolb3rjjoj.min.js"></script>
+<!--SCRIPTS END-->
+
+    
+
+
+
+    </body>
+</html>
