@@ -255,8 +255,6 @@
 <p>编辑后，查看其内容：</p>
 <blockquote>
 <p>  ~ git:(master) ✗ cat myword.txt </p>
-</blockquote>
-<blockquote>
 <p>hello fengyu</p>
 <p>hello hadoop</p>
 <p>hello mapreduce</p>
@@ -270,7 +268,7 @@
 <blockquote>
 <p> ~ git:(master) ✗ hadoop fs -ls /data/wordcount</p>
 <p>Found 1 items</p>
-<p>-rw-r–r–   1 fengyu supergroup         55 2018-03-14 21:36 /data/wordcount/myword.txt</p>
+<p>-rw-r—r—   1 fengyu supergroup         55 2018-03-14 21:36 /data/wordcount/myword.txt</p>
 </blockquote>
 <p><strong>（3）运行wordcount程序</strong></p>
 <p>执行如下命令：</p>
@@ -281,8 +279,8 @@
 <blockquote>
 <p> ~ git:(master) ✗ hadoop fs -ls /output/wordcount</p>
 <p>Found 2 items</p>
-<p>-rw-r–r–   1 fengyu supergroup          0 2018-03-14 21:45 /output/wordcount/_SUCCESS</p>
-<p>-rw-r–r–   1 fengyu supergroup         46 2018-03-14 21:45 /output/wordcount/part-r-00000</p>
+<p>-rw-r—r—   1 fengyu supergroup          0 2018-03-14 21:45 /output/wordcount/_SUCCESS</p>
+<p>-rw-r—r—   1 fengyu supergroup         46 2018-03-14 21:45 /output/wordcount/part-r-00000</p>
 </blockquote>
 <p>查看 part-r-00000 文件</p>
 <blockquote>
@@ -346,7 +344,7 @@
     </nav>
     <ul class="post-actions post-action-share">
         <li class="post-action hide-lg hide-md hide-sm">
-            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Diesen Beitrag teilen">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
                 <i class="fa fa-share-alt" aria-hidden="true"></i>
             </a>
         </li>
@@ -380,7 +378,7 @@
         
         <li class="post-action">
             
-                <a class="post-action-btn btn btn--default" href="#" aria-label="Nach oben">
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
             
                 <i class="fa fa-list" aria-hidden="true"></i>
             </a>
@@ -432,7 +430,7 @@
     </nav>
     <ul class="post-actions post-action-share">
         <li class="post-action hide-lg hide-md hide-sm">
-            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Diesen Beitrag teilen">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
                 <i class="fa fa-share-alt" aria-hidden="true"></i>
             </a>
         </li>
@@ -466,7 +464,7 @@
         
         <li class="post-action">
             
-                <a class="post-action-btn btn btn--default" href="#" aria-label="Nach oben">
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
             
                 <i class="fa fa-list" aria-hidden="true"></i>
             </a>

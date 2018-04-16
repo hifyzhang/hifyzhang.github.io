@@ -180,25 +180,25 @@
 <h3 id="3-1-时间序列的AR、MA、ARIMA建模"><a href="#3-1-时间序列的AR、MA、ARIMA建模" class="headerlink" title="3.1 时间序列的AR、MA、ARIMA建模"></a>3.1 时间序列的AR、MA、ARIMA建模</h3><p>博克斯与詹金斯所著《时间序列分析：预测与控制》（Time Series Analysis: Forecasting and Control）一书的问世，带来了新一代的预测工具。这种普遍被称为博克斯—詹金斯方法论或被技术性地称为ARIMA方法论的新预测方法，在“让数据自己说话”的哲理的指引下，着重分析经济时间序列本身的概率或随机性质，而不在意构造单一方程或联立方程模型。</p>
 <p>在博克斯—詹金斯时间序列模型中，$Y_t$ 可由其自身的过去或滞后值以及随机误差项来解释，而不像回归模型那样，用 $k$ 个回归元 $X_1, X_2$ 等去解释。</p>
 <h4 id="3-1-1-自回归过程（AR）"><a href="#3-1-1-自回归过程（AR）" class="headerlink" title="3.1.1 自回归过程（AR）"></a>3.1.1 自回归过程（AR）</h4><p>如果把$Y_t$的模型写为：</p>
-<p>​        $Y_t - \delta = \alpha(Y_{t-1} - \delta) + \mu_t$</p>
+<p>​        $Y<em>t - \delta = \alpha(Y</em>{t-1} - \delta) + \mu_t$</p>
 <p>其中$\delta$是$Y$的均值，而$\mu_t$是有零均值和恒定方差$\sigma^2$的不相关随机误差项（即$\mu_t$是白噪音），则我们说$Y_t$遵循一个一阶自回归或AR(1)随机过程。</p>
 <p>但如果我们考虑这样的模型：</p>
-<p>​        $Y_t - \delta = \alpha_1(Y_{t-1} - \delta) + \alpha_2(Y_{t-2} - \delta) + \mu_t$</p>
+<p>​        $Y<em>t - \delta = \alpha_1(Y</em>{t-1} - \delta) + \alpha<em>2(Y</em>{t-2} - \delta) + \mu_t$</p>
 <p>我们就说$Y_t$遵循一个二阶自回归或AR(2)过程。就是说，t时期的$Y$值依赖于它在先前两个时期的值。$Y$仍被表示为对其均值$\delta$的离差。</p>
 <p>一般地，我们有：</p>
-<p>​        $Y_t - \delta = \alpha_1(Y_{t-1} - \delta) + \alpha_2(Y_{t-2} - \delta) + ··· +  \alpha_p(Y_{t-p} - \delta) + \mu_t$</p>
+<p>​        $Y<em>t - \delta = \alpha_1(Y</em>{t-1} - \delta) + \alpha<em>2(Y</em>{t-2} - \delta) + ··· +  \alpha<em>p(Y</em>{t-p} - \delta) + \mu_t$</p>
 <p>这时，$Y_t$是一个P阶自回归或AR(p)过程。</p>
 <h4 id="3-1-2-移动平均过程（MA）"><a href="#3-1-2-移动平均过程（MA）" class="headerlink" title="3.1.2 移动平均过程（MA）"></a>3.1.2 移动平均过程（MA）</h4><p>AR过程并非产生$Y$的唯一可能的机制。假令我们把$Y$的模型描述为：</p>
-<p>​        $Y_t = \mu + \beta_0\mu_t + \beta_1\mu_{t-1}$</p>
+<p>​        $Y<em>t = \mu + \beta_0\mu_t + \beta_1\mu</em>{t-1}$</p>
 <p>其中$\mu$是常数，并且和前面一样，是白噪音随机误差项。t时期的$Y$等于一个常数加上现在和过去误差项的一个移动平均值。因此，像这种情形，我们就说$Y$遵循一个一阶移动平均或MA(1)过程。</p>
 <p>如果$Y$的表达式为：</p>
-<p>​        $Y_t = \mu + \beta_0\mu_t + \beta_1\mu_{t-1}+ \beta_2\mu_{t-2}$</p>
+<p>​        $Y<em>t = \mu + \beta_0\mu_t + \beta_1\mu</em>{t-1}+ \beta<em>2\mu</em>{t-2}$</p>
 <p>则它是一个MA(2)过程，更一般地，</p>
-<p>​        $Y_t = \mu + \beta_0\mu_t + \beta_1\mu_{t-1} + \beta_2\mu_{t-2} + ··· + \beta_q\mu_{t-q}$</p>
+<p>​        $Y<em>t = \mu + \beta_0\mu_t + \beta_1\mu</em>{t-1} + \beta<em>2\mu</em>{t-2} + ··· + \beta<em>q\mu</em>{t-q}$</p>
 <p>是一个MA(q)过程。</p>
 <p>总之，移动平均过程不外是一些白噪音误差项的一个线性组合。</p>
 <h4 id="3-1-3-自回归移动平均过程（ARMA）"><a href="#3-1-3-自回归移动平均过程（ARMA）" class="headerlink" title="3.1.3 自回归移动平均过程（ARMA）"></a>3.1.3 自回归移动平均过程（ARMA）</h4><p>当然，$Y$很可能兼有AR和MA的特性，从而它是ARMA。比如说$Y_t$可以写为：</p>
-<p>​        $Y_t = \theta + \alpha_1Y_{t-1} + \beta_0\mu_t + \beta_1\mu_{t-1}$</p>
+<p>​        $Y<em>t = \theta + \alpha_1Y</em>{t-1} + \beta<em>0\mu_t + \beta_1\mu</em>{t-1}$</p>
 <p>其中有一自然回归项和一移动平均项，那么它就是一个ARMA(1, 1)过程。</p>
 <p>一般地，在一个ARMA(p, q)过程中将有p个自回归项，和q个移动平均项。</p>
 <h4 id="3-1-4-自回归求积移动平均过程（ARIMA）"><a href="#3-1-4-自回归求积移动平均过程（ARIMA）" class="headerlink" title="3.1.4 自回归求积移动平均过程（ARIMA）"></a>3.1.4 自回归求积移动平均过程（ARIMA）</h4><p>以上所讨论的时间序列模型是建立在时间序列是平稳的基础上。通常，我们需要将一个时间序列差分d次，才将其变平稳，然后用ARMA(p, q)作为它的模型 ，这时我们就称那个原始的时间序列是ARIMA(p, d, q)，也就是说它是一个<strong>自回归求积移动平均</strong>时间序列。其中，p指自回归项数，d指序列称为平稳之前必须取其差分的次数，q指移动平均项数。</p>
@@ -249,7 +249,7 @@
     </nav>
     <ul class="post-actions post-action-share">
         <li class="post-action hide-lg hide-md hide-sm">
-            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Diesen Beitrag teilen">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
                 <i class="fa fa-share-alt" aria-hidden="true"></i>
             </a>
         </li>
@@ -283,7 +283,7 @@
         
         <li class="post-action">
             
-                <a class="post-action-btn btn btn--default" href="#" aria-label="Nach oben">
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
             
                 <i class="fa fa-list" aria-hidden="true"></i>
             </a>
@@ -335,7 +335,7 @@
     </nav>
     <ul class="post-actions post-action-share">
         <li class="post-action hide-lg hide-md hide-sm">
-            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Diesen Beitrag teilen">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
                 <i class="fa fa-share-alt" aria-hidden="true"></i>
             </a>
         </li>
@@ -369,7 +369,7 @@
         
         <li class="post-action">
             
-                <a class="post-action-btn btn btn--default" href="#" aria-label="Nach oben">
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
             
                 <i class="fa fa-list" aria-hidden="true"></i>
             </a>

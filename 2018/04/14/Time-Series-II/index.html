@@ -185,14 +185,11 @@
 <p>（3）单位根检验</p>
 <h4 id="2-2-1-图示分析"><a href="#2-2-1-图示分析" class="headerlink" title="2.2.1 图示分析"></a>2.2.1 图示分析</h4><p>图示分析是一种操作简便、运用广泛的平稳性判别方法，但是判别结论容易带有一定的主观性，所以最好能辅以统计检验方法进行判断。</p>
 <p>根据平稳时间序列均值和方差为常数的性质可知，平稳时间序列的时序图应该显示出该序列始终在一个常数值附近随机波动，而且波动的范围有明显的相似性特点。如果时序图显示出该序列有明显的趋势性或者周期性，那么它通常不是平稳序列。根据这个性质，很多非平稳序列通过查看时序图就可以被识别出来。</p>
-<h4 id="2-2-2-自相关函数和相关图"><a href="#2-2-2-自相关函数和相关图" class="headerlink" title="2.2.2 自相关函数和相关图"></a>2.2.2 自相关函数和相关图</h4><p>有一种平稳性检验，它基于所谓的<strong>自相关函数(ACF)</strong> （autocorrelation function）。由于实际上我们只有随机过程的一个实现（即样本），所以我们只能计算出<strong>样本自相关函数(SACF)</strong>（sample autocorrelation function），$$ \hat p_k$$ 。</p>
-<p>为了计算它，我们必须首先计算$$k$$阶滞后的<strong>样本协方差</strong> $$\hat \gamma_k$$ 和<strong>样本方差</strong> $$\hat \gamma_0$$ ，其定义分别为：</p>
-<p>$$\hat \gamma_k ={\sum(Y_t - \overline Y)\over n}$$</p>
-<p>$$\hat \gamma_0 = {\sum (Y_t - \overline Y)^2\over n}$$</p>
-<p>其中，$$n$$ 为样本容量，$$\overline Y$$ 为样本均值。因此，$$k$$ 阶样本自相关函数就是：</p>
-<p>$$\hat \rho_k = {\hat \gamma_k\over \hat \gamma_0}$$</p>
-<p>它无非就是$$k$$ 阶样本协方差与样本方差之比。将$$\hat \rho_k$$ 对$$k$$ 的描点则称之为<strong>样本相关图</strong>。</p>
-<p>自相关函数是用来描述时间序列中不同观测之间的线性相关程度的，平稳时间序列通常都具有短期相关性，具体描述就是随着延迟期数k的增加，平稳序列的自相关系数 $$\hat \rho_k$$ 会很快衰减向零。反之，非平稳序列的自相关系数衰减向零的速度通常比较慢。</p>
+<h4 id="2-2-2-自相关函数和相关图"><a href="#2-2-2-自相关函数和相关图" class="headerlink" title="2.2.2 自相关函数和相关图"></a>2.2.2 自相关函数和相关图</h4><p>有一种平稳性检验，它基于所谓的<strong>自相关函数(ACF)</strong> （autocorrelation function）。由于实际上我们只有随机过程的一个实现（即样本），所以我们只能计算出<strong>样本自相关函数(SACF)</strong>（sample autocorrelation function），<script type="math/tex">\hat p_k</script> 。</p>
+<p>为了计算它，我们必须首先计算<script type="math/tex">k</script>阶滞后的<strong>样本协方差</strong> <script type="math/tex">\hat \gamma_k</script> 和<strong>样本方差</strong> <script type="math/tex">\hat \gamma_0</script> ，其定义分别为：</p>
+<script type="math/tex; mode=display">\hat \gamma_k ={\sum(Y_t - \overline Y)\over n}</script><script type="math/tex; mode=display">\hat \gamma_0 = {\sum (Y_t - \overline Y)^2\over n}</script><p>其中，<script type="math/tex">n</script> 为样本容量，<script type="math/tex">\overline Y</script> 为样本均值。因此，<script type="math/tex">k</script> 阶样本自相关函数就是：</p>
+<script type="math/tex; mode=display">\hat \rho_k = {\hat \gamma_k\over \hat \gamma_0}</script><p>它无非就是<script type="math/tex">k</script> 阶样本协方差与样本方差之比。将<script type="math/tex">\hat \rho_k</script> 对<script type="math/tex">k</script> 的描点则称之为<strong>样本相关图</strong>。</p>
+<p>自相关函数是用来描述时间序列中不同观测之间的线性相关程度的，平稳时间序列通常都具有短期相关性，具体描述就是随着延迟期数k的增加，平稳序列的自相关系数 <script type="math/tex">\hat \rho_k</script> 会很快衰减向零。反之，非平稳序列的自相关系数衰减向零的速度通常比较慢。</p>
 <h4 id="2-2-3-单位根检验"><a href="#2-2-3-单位根检验" class="headerlink" title="2.2.3 单位根检验"></a>2.2.3 单位根检验</h4><p>单位根检验是指检验序列中是否存在单位根，若存在单位根则说明属于非平稳序列，会使回归分析中存在伪回归。检验单位根的方法主要包括DF检验（Dickey-Fuller test）和ADF检验（Augmented Dickey-Fuller test）等方法。</p>
 <p>这里值得注意的问题在于，DF/ADF检验的$H_0$假设，与通常在计量经济学中遇到的其他问题的$H_0$假设不同，这里的假设为，存在单位根（即不好的方面的假设）。</p>
 <h3 id="2-3-对非平稳时间序列进行变换"><a href="#2-3-对非平稳时间序列进行变换" class="headerlink" title="2.3 对非平稳时间序列进行变换"></a>2.3 对非平稳时间序列进行变换</h3><p>为了避免将一个非平稳时间序列对一个或多个非平稳时间序列回归所导致的谬误回归问题，我们必须对非平稳时间序列进行变换，使之成为平稳序列。变化的方法主要是<strong>差分平稳</strong>以及<strong>趋势平稳</strong>。</p>
@@ -240,7 +237,7 @@
     </nav>
     <ul class="post-actions post-action-share">
         <li class="post-action hide-lg hide-md hide-sm">
-            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Diesen Beitrag teilen">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
                 <i class="fa fa-share-alt" aria-hidden="true"></i>
             </a>
         </li>
@@ -274,7 +271,7 @@
         
         <li class="post-action">
             
-                <a class="post-action-btn btn btn--default" href="#" aria-label="Nach oben">
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
             
                 <i class="fa fa-list" aria-hidden="true"></i>
             </a>
@@ -326,7 +323,7 @@
     </nav>
     <ul class="post-actions post-action-share">
         <li class="post-action hide-lg hide-md hide-sm">
-            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Diesen Beitrag teilen">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
                 <i class="fa fa-share-alt" aria-hidden="true"></i>
             </a>
         </li>
@@ -360,7 +357,7 @@
         
         <li class="post-action">
             
-                <a class="post-action-btn btn btn--default" href="#" aria-label="Nach oben">
+                <a class="post-action-btn btn btn--default" href="#" aria-label="Back to top">
             
                 <i class="fa fa-list" aria-hidden="true"></i>
             </a>
