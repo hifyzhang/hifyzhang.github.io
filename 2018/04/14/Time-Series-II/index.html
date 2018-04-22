@@ -173,27 +173,42 @@
       
         <p>这是时间序列的第二章，主要介绍的是时间序列的一个重要的问题：平稳性。</p>
 <a id="more"></a>
-<h2 id="二、时间序列的主要概念"><a href="#二、时间序列的主要概念" class="headerlink" title="二、时间序列的主要概念"></a>二、时间序列的主要概念</h2><h3 id="2-1-时间序列的平稳性"><a href="#2-1-时间序列的平稳性" class="headerlink" title="2.1 时间序列的平稳性"></a>2.1 时间序列的平稳性</h3><h4 id="2-1-1-随机过程"><a href="#2-1-1-随机过程" class="headerlink" title="2.1.1 随机过程"></a>2.1.1 随机过程</h4><p>一个<strong>随机过程</strong>就是随机变量按时间编排的集合。比如说1970年第一季度的GDP为28728亿美元。理论上讲，1970点第一季度的GDP数字可能是任何一个数字，取决于当时的政治与经济环境，而数字28728只是所有这些可能性中的一个特定的<strong>实现</strong>。因此，我们可以说，GDP是一个随机过程。在时间序列中，我们利用这些实现对其背后的随机过程加以推断。</p>
-<h4 id="2-1-2-平稳随机过程"><a href="#2-1-2-平稳随机过程" class="headerlink" title="2.1.2 平稳随机过程"></a>2.1.2 平稳随机过程</h4><p>广泛地讲，若一个随机过程的均值和方差在时间过程上保持是常数，并且在任何两时期之间的协方差值仅依赖于该两时期间的距离或滞后，而不依赖于计算这个协方差的实际时间，则称之为<strong>平稳随机过程</strong>（stationary stochastic process）。</p>
+<h2 id="二时间序列的主要概念">二、时间序列的主要概念</h2>
+<h3 id="时间序列的平稳性">2.1 时间序列的平稳性</h3>
+<h4 id="随机过程">2.1.1 随机过程</h4>
+<p>一个<strong>随机过程</strong>就是随机变量按时间编排的集合。比如说1970年第一季度的GDP为28728亿美元。理论上讲，1970点第一季度的GDP数字可能是任何一个数字，取决于当时的政治与经济环境，而数字28728只是所有这些可能性中的一个特定的<strong>实现</strong>。因此，我们可以说，GDP是一个随机过程。在时间序列中，我们利用这些实现对其背后的随机过程加以推断。</p>
+<h4 id="平稳随机过程">2.1.2 平稳随机过程</h4>
+<p>广泛地讲，若一个随机过程的均值和方差在时间过程上保持是常数，并且在任何两时期之间的协方差值仅依赖于该两时期间的距离或滞后，而不依赖于计算这个协方差的实际时间，则称之为<strong>平稳随机过程</strong>（stationary stochastic process）。</p>
 <p>如果一个时间序列按上述定义不是平稳的，则称之为<strong>非平稳时间序列</strong>（nonstationary time series），也就是说，一个非平稳时间序列指要么均值随时间而变化，要么方差随时间而变化，或者二者同时在发生变化。</p>
-<h3 id="2-2-平稳性的检测方法"><a href="#2-2-平稳性的检测方法" class="headerlink" title="2.2 平稳性的检测方法"></a>2.2 平稳性的检测方法</h3><p>尽管平稳性检验的方法存在多种，但是我们这里只研究在文献中广泛讨论的三种检验方式：</p>
+<h3 id="平稳性的检测方法">2.2 平稳性的检测方法</h3>
+<p>尽管平稳性检验的方法存在多种，但是我们这里只研究在文献中广泛讨论的三种检验方式：</p>
 <p>（1）图示分析</p>
 <p>（2）相关图检验</p>
 <p>（3）单位根检验</p>
-<h4 id="2-2-1-图示分析"><a href="#2-2-1-图示分析" class="headerlink" title="2.2.1 图示分析"></a>2.2.1 图示分析</h4><p>图示分析是一种操作简便、运用广泛的平稳性判别方法，但是判别结论容易带有一定的主观性，所以最好能辅以统计检验方法进行判断。</p>
+<h4 id="图示分析">2.2.1 图示分析</h4>
+<p>图示分析是一种操作简便、运用广泛的平稳性判别方法，但是判别结论容易带有一定的主观性，所以最好能辅以统计检验方法进行判断。</p>
 <p>根据平稳时间序列均值和方差为常数的性质可知，平稳时间序列的时序图应该显示出该序列始终在一个常数值附近随机波动，而且波动的范围有明显的相似性特点。如果时序图显示出该序列有明显的趋势性或者周期性，那么它通常不是平稳序列。根据这个性质，很多非平稳序列通过查看时序图就可以被识别出来。</p>
-<h4 id="2-2-2-自相关函数和相关图"><a href="#2-2-2-自相关函数和相关图" class="headerlink" title="2.2.2 自相关函数和相关图"></a>2.2.2 自相关函数和相关图</h4><p>有一种平稳性检验，它基于所谓的<strong>自相关函数(ACF)</strong> （autocorrelation function）。由于实际上我们只有随机过程的一个实现（即样本），所以我们只能计算出<strong>样本自相关函数(SACF)</strong>（sample autocorrelation function），<script type="math/tex">\hat p_k</script> 。</p>
-<p>为了计算它，我们必须首先计算<script type="math/tex">k</script>阶滞后的<strong>样本协方差</strong> <script type="math/tex">\hat \gamma_k</script> 和<strong>样本方差</strong> <script type="math/tex">\hat \gamma_0</script> ，其定义分别为：</p>
-<script type="math/tex; mode=display">\hat \gamma_k ={\sum(Y_t - \overline Y)\over n}</script><script type="math/tex; mode=display">\hat \gamma_0 = {\sum (Y_t - \overline Y)^2\over n}</script><p>其中，<script type="math/tex">n</script> 为样本容量，<script type="math/tex">\overline Y</script> 为样本均值。因此，<script type="math/tex">k</script> 阶样本自相关函数就是：</p>
-<script type="math/tex; mode=display">\hat \rho_k = {\hat \gamma_k\over \hat \gamma_0}</script><p>它无非就是<script type="math/tex">k</script> 阶样本协方差与样本方差之比。将<script type="math/tex">\hat \rho_k</script> 对<script type="math/tex">k</script> 的描点则称之为<strong>样本相关图</strong>。</p>
-<p>自相关函数是用来描述时间序列中不同观测之间的线性相关程度的，平稳时间序列通常都具有短期相关性，具体描述就是随着延迟期数k的增加，平稳序列的自相关系数 <script type="math/tex">\hat \rho_k</script> 会很快衰减向零。反之，非平稳序列的自相关系数衰减向零的速度通常比较慢。</p>
-<h4 id="2-2-3-单位根检验"><a href="#2-2-3-单位根检验" class="headerlink" title="2.2.3 单位根检验"></a>2.2.3 单位根检验</h4><p>单位根检验是指检验序列中是否存在单位根，若存在单位根则说明属于非平稳序列，会使回归分析中存在伪回归。检验单位根的方法主要包括DF检验（Dickey-Fuller test）和ADF检验（Augmented Dickey-Fuller test）等方法。</p>
-<p>这里值得注意的问题在于，DF/ADF检验的$H_0$假设，与通常在计量经济学中遇到的其他问题的$H_0$假设不同，这里的假设为，存在单位根（即不好的方面的假设）。</p>
-<h3 id="2-3-对非平稳时间序列进行变换"><a href="#2-3-对非平稳时间序列进行变换" class="headerlink" title="2.3 对非平稳时间序列进行变换"></a>2.3 对非平稳时间序列进行变换</h3><p>为了避免将一个非平稳时间序列对一个或多个非平稳时间序列回归所导致的谬误回归问题，我们必须对非平稳时间序列进行变换，使之成为平稳序列。变化的方法主要是<strong>差分平稳</strong>以及<strong>趋势平稳</strong>。</p>
-<h4 id="2-3-1-差分平稳"><a href="#2-3-1-差分平稳" class="headerlink" title="2.3.1 差分平稳"></a>2.3.1 差分平稳</h4><p>若一个时间序列具有一个单位根，则这种时间序列的一阶差分就是平稳的（若有两个单位根，则需要进行两次差分，以此类推，通常一阶差分就平稳了）。</p>
-<h4 id="2-3-2-趋势平稳"><a href="#2-3-2-趋势平稳" class="headerlink" title="2.3.2 趋势平稳"></a>2.3.2 趋势平稳</h4><p>使这种时间序列变平稳的最简单的办法就是将它对时间做回归，从此回归中得到的残差将是平稳的。</p>
+<h4 id="自相关函数和相关图">2.2.2 自相关函数和相关图</h4>
+<p>有一种平稳性检验，它基于所谓的<strong>自相关函数(ACF)</strong> （autocorrelation function）。由于实际上我们只有随机过程的一个实现（即样本），所以我们只能计算出<strong>样本自相关函数(SACF)</strong>（sample autocorrelation function），<span class="math display">\[ \hat p_k\]</span> 。</p>
+<p>为了计算它，我们必须首先计算<span class="math display">\[k\]</span>阶滞后的<strong>样本协方差</strong> <span class="math display">\[\hat \gamma_k\]</span> 和<strong>样本方差</strong> <span class="math display">\[\hat \gamma_0\]</span> ，其定义分别为：</p>
+<p><span class="math display">\[\hat \gamma_k ={\sum(Y_t - \overline Y)\over n}\]</span></p>
+<p><span class="math display">\[\hat \gamma_0 = {\sum (Y_t - \overline Y)^2\over n}\]</span></p>
+<p>其中，<span class="math display">\[n\]</span> 为样本容量，<span class="math display">\[\overline Y\]</span> 为样本均值。因此，<span class="math display">\[k\]</span> 阶样本自相关函数就是：</p>
+<p><span class="math display">\[\hat \rho_k = {\hat \gamma_k\over \hat \gamma_0}\]</span></p>
+<p>它无非就是<span class="math display">\[k\]</span> 阶样本协方差与样本方差之比。将<span class="math display">\[\hat \rho_k\]</span> 对<span class="math display">\[k\]</span> 的描点则称之为<strong>样本相关图</strong>。</p>
+<p>自相关函数是用来描述时间序列中不同观测之间的线性相关程度的，平稳时间序列通常都具有短期相关性，具体描述就是随着延迟期数k的增加，平稳序列的自相关系数 <span class="math display">\[\hat \rho_k\]</span> 会很快衰减向零。反之，非平稳序列的自相关系数衰减向零的速度通常比较慢。</p>
+<h4 id="单位根检验">2.2.3 单位根检验</h4>
+<p>单位根检验是指检验序列中是否存在单位根，若存在单位根则说明属于非平稳序列，会使回归分析中存在伪回归。检验单位根的方法主要包括DF检验（Dickey-Fuller test）和ADF检验（Augmented Dickey-Fuller test）等方法。</p>
+<p>这里值得注意的问题在于，DF/ADF检验的<span class="math inline">\(H_0\)</span>假设，与通常在计量经济学中遇到的其他问题的<span class="math inline">\(H_0\)</span>假设不同，这里的假设为，存在单位根（即不好的方面的假设）。</p>
+<h3 id="对非平稳时间序列进行变换">2.3 对非平稳时间序列进行变换</h3>
+<p>为了避免将一个非平稳时间序列对一个或多个非平稳时间序列回归所导致的谬误回归问题，我们必须对非平稳时间序列进行变换，使之成为平稳序列。变化的方法主要是<strong>差分平稳</strong>以及<strong>趋势平稳</strong>。</p>
+<h4 id="差分平稳">2.3.1 差分平稳</h4>
+<p>若一个时间序列具有一个单位根，则这种时间序列的一阶差分就是平稳的（若有两个单位根，则需要进行两次差分，以此类推，通常一阶差分就平稳了）。</p>
+<h4 id="趋势平稳">2.3.2 趋势平稳</h4>
+<p>使这种时间序列变平稳的最简单的办法就是将它对时间做回归，从此回归中得到的残差将是平稳的。</p>
 <p>注意：若一个时间序列是差分平稳过程，而我们把它当作趋势平稳过程来处理，这种情况被称为<strong>差分不足</strong>（underdifferencing）。另一方面，若一个时间序列是趋势平稳过程而我们把它当作差分平稳过程处理，则称之为<strong>过度差分</strong>（overdifferencing）。</p>
-<h3 id="2-4-协整"><a href="#2-4-协整" class="headerlink" title="2.4 协整"></a>2.4 协整</h3><p>协整是指，尽管两个或多个时间序列个别而论是非平稳的，但它们的线性组合则可以是平稳的。对协整的检验方法有许多，通常使用EG检验或AEG检验，即对从协整回归中估计出来的残差进行DF或ADF单位根检验。</p>
+<h3 id="协整">2.4 协整</h3>
+<p>协整是指，尽管两个或多个时间序列个别而论是非平稳的，但它们的线性组合则可以是平稳的。对协整的检验方法有许多，通常使用EG检验或AEG检验，即对从协整回归中估计出来的残差进行DF或ADF单位根检验。</p>
 
       
 
@@ -620,6 +635,23 @@ MathJax.Hub.Queue(function() {
     </div>
 
 </div>
-  </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 </body>
 </html>

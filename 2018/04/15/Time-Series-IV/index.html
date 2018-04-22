@@ -176,7 +176,8 @@
         <p>这是时间序列的第四章，主要介绍的是时间序列的模型构造步骤，以ARIMA模型为例，介绍了一个简单的案例。</p>
 <p>同时，本时间序列这个专题内容已经全部写完。</p>
 <a id="more"></a>
-<h2 id="四、时间序列分析的基本步骤"><a href="#四、时间序列分析的基本步骤" class="headerlink" title="四、时间序列分析的基本步骤"></a>四、时间序列分析的基本步骤</h2><p>这个基本步骤主要以构建简单的ARIMA模型为主。主要采用的是Python下的numpy，pandas，matplotlib，statsmodels这四个包来进行分析操作。</p>
+<h2 id="四时间序列分析的基本步骤">四、时间序列分析的基本步骤</h2>
+<p>这个基本步骤主要以构建简单的ARIMA模型为主。主要采用的是Python下的numpy，pandas，matplotlib，statsmodels这四个包来进行分析操作。</p>
 <p>（1）<strong>数据的准备</strong>。选择统计口径一致的时间序列数据。</p>
 <p>本文使用的案例数据为1960年至1990年美国WPI物价指数，按照季度进行统计。</p>
 <p><a href="https://github.com/hifyzhang/mypic/blob/master/time%20series%20arima/wpi.csv" target="_blank" rel="noopener">数据地址</a></p>
@@ -190,13 +191,9 @@
 <p>（3）<strong>模型的选择</strong>。针对平稳序列，根据时间序列模型的识别规则，建立相应的模型。</p>
 <p>对于ARIMA(p,d,q)模型中的p与q，可以通过自相关与偏相关函数图观测得出。选择依据如下：</p>
 <ul>
-<li>若平稳序列的偏相关函数是截尾的，而自相关函数是拖尾的，则可以选择序列适合的AR模型；</li>
-</ul>
-<ul>
-<li>若平稳序列的偏相关函数是拖尾的，而自相关函数是截尾的，则可以选择序列适合的MA模型；</li>
-</ul>
-<ul>
-<li>若平稳序列的偏相关函数和自相关函数均是拖尾的，则序列适合ARMA模型。</li>
+<li><p>若平稳序列的偏相关函数是截尾的，而自相关函数是拖尾的，则可以选择序列适合的AR模型；</p></li>
+<li><p>若平稳序列的偏相关函数是拖尾的，而自相关函数是截尾的，则可以选择序列适合的MA模型；</p></li>
+<li><p>若平稳序列的偏相关函数和自相关函数均是拖尾的，则序列适合ARMA模型。</p></li>
 </ul>
 <p>同时，也可以通过赤池信息准则（Akaike Information Criterion，AIC）和贝叶斯信息准则（Bayesian Information Criterion，BIC）。</p>
 <p>AIC是衡量统计模型拟合优良性的一种标准，由日本统计学家赤池弘次在1974年提出，它建立在熵的概念上，提供了权衡估计模型复杂度和拟合数据优良性的标准。BIC与AIC相似，用于模型选择，1978年由Schwarz提出。训练模型时，增加参数数量，也就是增加模型复杂度，会增大似然函数，但是也会导致过拟合现象，针对该问题，AIC和BIC均引入了与模型参数个数相关的惩罚项，BIC的惩罚项比AIC的大，考虑了样本数量，样本数量过多时，可有效防止模型精度过高造成的模型复杂度过高。</p>
@@ -210,7 +207,9 @@
 <p>利用ARIMA(1,1,1)进行拟合：</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">model = ARIMA(ts, (<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>)).fit()</span><br><span class="line"><span class="keyword">print</span> model.summary()</span><br><span class="line"><span class="keyword">print</span> model.forecast(<span class="number">5</span>)[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
 <p>运行结果如下：</p>
-<p><img src="https://github.com/hifyzhang/mypic/blob/master/time%20series%20arima/result.png?raw=true" alt="avatar"></p>
+<figure>
+<img src="https://github.com/hifyzhang/mypic/blob/master/time%20series%20arima/result.png?raw=true" alt="avatar"><figcaption>avatar</figcaption>
+</figure>
 <p>同样也利用forecast方法，对根据通过检验的模型来进行预测分析。</p>
 
       
@@ -629,6 +628,23 @@ MathJax.Hub.Queue(function() {
     </div>
 
 </div>
-  </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 </body>
 </html>

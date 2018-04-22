@@ -173,39 +173,49 @@
       
         <p>这是时间序列的第三章，主要介绍的是时间序列的模型，以ARIMA为主，顺带也提及了一下ARCH模型和GARCH模型。</p>
 <a id="more"></a>
-<h2 id="三、时间序列分析的主要模型"><a href="#三、时间序列分析的主要模型" class="headerlink" title="三、时间序列分析的主要模型"></a>三、时间序列分析的主要模型</h2><p>时间序列的建模，通常是运用时间序列的过去值、当期值及滞后扰动项的加权和建立模型来“解释”时间序列的变化规律。</p>
-<h3 id="3-1-时间序列的AR、MA、ARIMA建模"><a href="#3-1-时间序列的AR、MA、ARIMA建模" class="headerlink" title="3.1 时间序列的AR、MA、ARIMA建模"></a>3.1 时间序列的AR、MA、ARIMA建模</h3><p>博克斯与詹金斯所著《时间序列分析：预测与控制》（Time Series Analysis: Forecasting and Control）一书的问世，带来了新一代的预测工具。这种普遍被称为博克斯—詹金斯方法论或被技术性地称为ARIMA方法论的新预测方法，在“让数据自己说话”的哲理的指引下，着重分析经济时间序列本身的概率或随机性质，而不在意构造单一方程或联立方程模型。</p>
-<p>在博克斯—詹金斯时间序列模型中，$Y_t$ 可由其自身的过去或滞后值以及随机误差项来解释，而不像回归模型那样，用 $k$ 个回归元 $X_1, X_2$ 等去解释。</p>
-<h4 id="3-1-1-自回归过程（AR）"><a href="#3-1-1-自回归过程（AR）" class="headerlink" title="3.1.1 自回归过程（AR）"></a>3.1.1 自回归过程（AR）</h4><p>如果把$Y_t$的模型写为：</p>
-<p>​        $Y<em>t - \delta = \alpha(Y</em>{t-1} - \delta) + \mu_t$</p>
-<p>其中$\delta$是$Y$的均值，而$\mu_t$是有零均值和恒定方差$\sigma^2$的不相关随机误差项（即$\mu_t$是白噪音），则我们说$Y_t$遵循一个一阶自回归或AR(1)随机过程。</p>
+<h2 id="三时间序列分析的主要模型">三、时间序列分析的主要模型</h2>
+<p>时间序列的建模，通常是运用时间序列的过去值、当期值及滞后扰动项的加权和建立模型来“解释”时间序列的变化规律。</p>
+<h3 id="时间序列的armaarima建模">3.1 时间序列的AR、MA、ARIMA建模</h3>
+<p>博克斯与詹金斯所著《时间序列分析：预测与控制》（Time Series Analysis: Forecasting and Control）一书的问世，带来了新一代的预测工具。这种普遍被称为博克斯—詹金斯方法论或被技术性地称为ARIMA方法论的新预测方法，在“让数据自己说话”的哲理的指引下，着重分析经济时间序列本身的概率或随机性质，而不在意构造单一方程或联立方程模型。</p>
+<p>在博克斯—詹金斯时间序列模型中，<span class="math inline">\(Y_t\)</span> 可由其自身的过去或滞后值以及随机误差项来解释，而不像回归模型那样，用 <span class="math inline">\(k\)</span> 个回归元 <span class="math inline">\(X_1, X_2\)</span> 等去解释。</p>
+<h4 id="自回归过程ar">3.1.1 自回归过程（AR）</h4>
+<p>如果把<span class="math inline">\(Y_t\)</span>的模型写为：</p>
+<p>​ <span class="math inline">\(Y_t - \delta = \alpha(Y_{t-1} - \delta) + \mu_t\)</span></p>
+<p>其中<span class="math inline">\(\delta\)</span>是<span class="math inline">\(Y\)</span>的均值，而<span class="math inline">\(\mu_t\)</span>是有零均值和恒定方差<span class="math inline">\(\sigma^2\)</span>的不相关随机误差项（即<span class="math inline">\(\mu_t\)</span>是白噪音），则我们说<span class="math inline">\(Y_t\)</span>遵循一个一阶自回归或AR(1)随机过程。</p>
 <p>但如果我们考虑这样的模型：</p>
-<p>​        $Y<em>t - \delta = \alpha_1(Y</em>{t-1} - \delta) + \alpha<em>2(Y</em>{t-2} - \delta) + \mu_t$</p>
-<p>我们就说$Y_t$遵循一个二阶自回归或AR(2)过程。就是说，t时期的$Y$值依赖于它在先前两个时期的值。$Y$仍被表示为对其均值$\delta$的离差。</p>
+<p>​ <span class="math inline">\(Y_t - \delta = \alpha_1(Y_{t-1} - \delta) + \alpha_2(Y_{t-2} - \delta) + \mu_t\)</span></p>
+<p>我们就说<span class="math inline">\(Y_t\)</span>遵循一个二阶自回归或AR(2)过程。就是说，t时期的<span class="math inline">\(Y\)</span>值依赖于它在先前两个时期的值。<span class="math inline">\(Y\)</span>仍被表示为对其均值<span class="math inline">\(\delta\)</span>的离差。</p>
 <p>一般地，我们有：</p>
-<p>​        $Y<em>t - \delta = \alpha_1(Y</em>{t-1} - \delta) + \alpha<em>2(Y</em>{t-2} - \delta) + ··· +  \alpha<em>p(Y</em>{t-p} - \delta) + \mu_t$</p>
-<p>这时，$Y_t$是一个P阶自回归或AR(p)过程。</p>
-<h4 id="3-1-2-移动平均过程（MA）"><a href="#3-1-2-移动平均过程（MA）" class="headerlink" title="3.1.2 移动平均过程（MA）"></a>3.1.2 移动平均过程（MA）</h4><p>AR过程并非产生$Y$的唯一可能的机制。假令我们把$Y$的模型描述为：</p>
-<p>​        $Y<em>t = \mu + \beta_0\mu_t + \beta_1\mu</em>{t-1}$</p>
-<p>其中$\mu$是常数，并且和前面一样，是白噪音随机误差项。t时期的$Y$等于一个常数加上现在和过去误差项的一个移动平均值。因此，像这种情形，我们就说$Y$遵循一个一阶移动平均或MA(1)过程。</p>
-<p>如果$Y$的表达式为：</p>
-<p>​        $Y<em>t = \mu + \beta_0\mu_t + \beta_1\mu</em>{t-1}+ \beta<em>2\mu</em>{t-2}$</p>
+<p>​ <span class="math inline">\(Y_t - \delta = \alpha_1(Y_{t-1} - \delta) + \alpha_2(Y_{t-2} - \delta) + ··· + \alpha_p(Y_{t-p} - \delta) + \mu_t\)</span></p>
+<p>这时，<span class="math inline">\(Y_t\)</span>是一个P阶自回归或AR(p)过程。</p>
+<h4 id="移动平均过程ma">3.1.2 移动平均过程（MA）</h4>
+<p>AR过程并非产生<span class="math inline">\(Y\)</span>的唯一可能的机制。假令我们把<span class="math inline">\(Y\)</span>的模型描述为：</p>
+<p>​ <span class="math inline">\(Y_t = \mu + \beta_0\mu_t + \beta_1\mu_{t-1}\)</span></p>
+<p>其中<span class="math inline">\(\mu\)</span>是常数，并且和前面一样，是白噪音随机误差项。t时期的<span class="math inline">\(Y\)</span>等于一个常数加上现在和过去误差项的一个移动平均值。因此，像这种情形，我们就说<span class="math inline">\(Y\)</span>遵循一个一阶移动平均或MA(1)过程。</p>
+<p>如果<span class="math inline">\(Y\)</span>的表达式为：</p>
+<p>​ <span class="math inline">\(Y_t = \mu + \beta_0\mu_t + \beta_1\mu_{t-1}+ \beta_2\mu_{t-2}\)</span></p>
 <p>则它是一个MA(2)过程，更一般地，</p>
-<p>​        $Y<em>t = \mu + \beta_0\mu_t + \beta_1\mu</em>{t-1} + \beta<em>2\mu</em>{t-2} + ··· + \beta<em>q\mu</em>{t-q}$</p>
+<p>​ <span class="math inline">\(Y_t = \mu + \beta_0\mu_t + \beta_1\mu_{t-1} + \beta_2\mu_{t-2} + ··· + \beta_q\mu_{t-q}\)</span></p>
 <p>是一个MA(q)过程。</p>
 <p>总之，移动平均过程不外是一些白噪音误差项的一个线性组合。</p>
-<h4 id="3-1-3-自回归移动平均过程（ARMA）"><a href="#3-1-3-自回归移动平均过程（ARMA）" class="headerlink" title="3.1.3 自回归移动平均过程（ARMA）"></a>3.1.3 自回归移动平均过程（ARMA）</h4><p>当然，$Y$很可能兼有AR和MA的特性，从而它是ARMA。比如说$Y_t$可以写为：</p>
-<p>​        $Y<em>t = \theta + \alpha_1Y</em>{t-1} + \beta<em>0\mu_t + \beta_1\mu</em>{t-1}$</p>
+<h4 id="自回归移动平均过程arma">3.1.3 自回归移动平均过程（ARMA）</h4>
+<p>当然，<span class="math inline">\(Y\)</span>很可能兼有AR和MA的特性，从而它是ARMA。比如说<span class="math inline">\(Y_t\)</span>可以写为：</p>
+<p>​ <span class="math inline">\(Y_t = \theta + \alpha_1Y_{t-1} + \beta_0\mu_t + \beta_1\mu_{t-1}\)</span></p>
 <p>其中有一自然回归项和一移动平均项，那么它就是一个ARMA(1, 1)过程。</p>
 <p>一般地，在一个ARMA(p, q)过程中将有p个自回归项，和q个移动平均项。</p>
-<h4 id="3-1-4-自回归求积移动平均过程（ARIMA）"><a href="#3-1-4-自回归求积移动平均过程（ARIMA）" class="headerlink" title="3.1.4 自回归求积移动平均过程（ARIMA）"></a>3.1.4 自回归求积移动平均过程（ARIMA）</h4><p>以上所讨论的时间序列模型是建立在时间序列是平稳的基础上。通常，我们需要将一个时间序列差分d次，才将其变平稳，然后用ARMA(p, q)作为它的模型 ，这时我们就称那个原始的时间序列是ARIMA(p, d, q)，也就是说它是一个<strong>自回归求积移动平均</strong>时间序列。其中，p指自回归项数，d指序列称为平稳之前必须取其差分的次数，q指移动平均项数。</p>
-<h4 id="3-1-5-其他"><a href="#3-1-5-其他" class="headerlink" title="3.1.5 其他"></a>3.1.5 其他</h4><p>应用博克斯—詹金斯方法论时，要注意的一个重要问题是，时间序列必须是平稳的，或者是经过一次或多次差分而变为平稳的时间序列。</p>
+<h4 id="自回归求积移动平均过程arima">3.1.4 自回归求积移动平均过程（ARIMA）</h4>
+<p>以上所讨论的时间序列模型是建立在时间序列是平稳的基础上。通常，我们需要将一个时间序列差分d次，才将其变平稳，然后用ARMA(p, q)作为它的模型 ，这时我们就称那个原始的时间序列是ARIMA(p, d, q)，也就是说它是一个<strong>自回归求积移动平均</strong>时间序列。其中，p指自回归项数，d指序列称为平稳之前必须取其差分的次数，q指移动平均项数。</p>
+<h4 id="其他">3.1.5 其他</h4>
+<p>应用博克斯—詹金斯方法论时，要注意的一个重要问题是，时间序列必须是平稳的，或者是经过一次或多次差分而变为平稳的时间序列。</p>
 <p>博克斯—詹金斯的目的，是要辨别并估计一个可解释为产生现有样本数据的统计模型。如果现在要把所估计的模型用于预测，我们必须假定该模型的特征在不同时期里特别是在将来的时期里保持不变。因此，要求有平稳的数据的简单理由是，这些数据推测出来的任何模型本身就可解释为平稳的或稳定的，从而为预测奠定有效的基础。</p>
 <p>在实际生活中，有许多时间序列展现出季节性。超市在主要节日中的销售量，季节性的雪糕消费量，节假日的出行等都属于季节性趋势。在实际处理中，可以将有季节性趋势的时间段进行差分，把季节性影响消除掉，再决定用哪一种ARIMA模型进行拟合。</p>
-<h3 id="3-2-ARCH和GARCH模型"><a href="#3-2-ARCH和GARCH模型" class="headerlink" title="3.2 ARCH和GARCH模型"></a>3.2 ARCH和GARCH模型</h3><p>在诸如股票价格、汇率、通货膨胀率等金融时间序列，通常会表现出群集波动的现象，即在相当长一段时期，其价格表现出大幅波动，然后又会在下一段时期内保持相对稳定。</p>
+<h3 id="arch和garch模型">3.2 ARCH和GARCH模型</h3>
+<p>在诸如股票价格、汇率、通货膨胀率等金融时间序列，通常会表现出群集波动的现象，即在相当长一段时期，其价格表现出大幅波动，然后又会在下一段时期内保持相对稳定。</p>
 <p>这些金融时间序列多数都具有这样一个特征：它们的水平值为非平稳的，它们的一阶差分形式则通常都是平稳的。但是这些一阶差分通常都表现出大幅度的摆动或波动，说明金融时间序列的方差也在随着时间而变化。</p>
-<h4 id="3-2-1-ARCH模型"><a href="#3-2-1-ARCH模型" class="headerlink" title="3.2.1 ARCH模型"></a>3.2.1 ARCH模型</h4><p>面对金融时间序列这种情况，就需要使用由恩格尔 (Engle, 1982) 提出的<strong>自回归条件异方差 </strong> (autoregressive conditional heteroscedasticity, ARCH) 模型。顾名思义，由于不同时期所观测到的异方差（或者不相等的方差）也可能自相关，所以这种异方差便可能具有自回归结构。</p>
-<h4 id="3-2-2-GARCH-模型"><a href="#3-2-2-GARCH-模型" class="headerlink" title="3.2.2 GARCH 模型"></a>3.2.2 GARCH 模型</h4><p>在ARCH(p)模型中，如果p很大，则要估计很多参数，会损失样本容量。Bollerslev(1986)提出<strong>广义自回归条件异方差</strong> (generalized autoregressive conditional heteroscedasticity, GARCH)，使得待估计参数减少，而对未来条件方差的预测更加准确。简单的讲，一个GARCH(1,1)模型就等价于一个ARCH(2)模型，而一个GARCH(p,q)模型就等价于一个ARCH(p+q)模型。</p>
+<h4 id="arch模型">3.2.1 ARCH模型</h4>
+<p>面对金融时间序列这种情况，就需要使用由恩格尔 (Engle, 1982) 提出的<strong>自回归条件异方差 </strong> (autoregressive conditional heteroscedasticity, ARCH) 模型。顾名思义，由于不同时期所观测到的异方差（或者不相等的方差）也可能自相关，所以这种异方差便可能具有自回归结构。</p>
+<h4 id="garch-模型">3.2.2 GARCH 模型</h4>
+<p>在ARCH(p)模型中，如果p很大，则要估计很多参数，会损失样本容量。Bollerslev(1986)提出<strong>广义自回归条件异方差</strong> (generalized autoregressive conditional heteroscedasticity, GARCH)，使得待估计参数减少，而对未来条件方差的预测更加准确。简单的讲，一个GARCH(1,1)模型就等价于一个ARCH(2)模型，而一个GARCH(p,q)模型就等价于一个ARCH(p+q)模型。</p>
 
       
 
@@ -632,6 +642,23 @@ MathJax.Hub.Queue(function() {
     </div>
 
 </div>
-  </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 </body>
 </html>
