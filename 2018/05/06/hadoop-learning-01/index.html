@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: Time Series | Fengyu&#39;s Blog</title>
+  <title>Hadoop初体验之wordcount | Fengyu&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Fengyu&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/tags/Time-Series/index.html">
+  <meta name="description" content="这是第一篇，Hadoop初体验，主要介绍了相关知识点，以及一个入门的案例——wordcount，以及在案例操作过程中遇到的问题及解决办法。">
+<meta name="keywords" content="hadoop">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hadoop初体验之wordcount">
+<meta property="og:url" content="http://yoursite.com/2018/05/06/hadoop-learning-01/index.html">
 <meta property="og:site_name" content="Fengyu&#39;s Blog">
+<meta property="og:description" content="这是第一篇，Hadoop初体验，主要介绍了相关知识点，以及一个入门的案例——wordcount，以及在案例操作过程中遇到的问题及解决办法。">
 <meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2018-05-06T14:01:47.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Fengyu&#39;s Blog">
+<meta name="twitter:title" content="Hadoop初体验之wordcount">
+<meta name="twitter:description" content="这是第一篇，Hadoop初体验，主要介绍了相关知识点，以及一个入门的案例——wordcount，以及在案例操作过程中遇到的问题及解决办法。">
   
     <link rel="alternative" href="/atom.xml" title="Fengyu&#39;s Blog" type="application/atom+xml">
   
@@ -146,190 +151,277 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-hadoop-learning-01" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Hadoop初体验之wordcount
+    </h1>
+  
+
+        
+        <a href="/2018/05/06/hadoop-learning-01/" class="archive-article-date">
+  	<time datetime="2018-05-06T13:57:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-06</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这是第一篇，Hadoop初体验，主要介绍了相关知识点，以及一个入门的案例——wordcount，以及在案例操作过程中遇到的问题及解决办法。</p>
+<a id="more"></a>
+<p>Hadoop是一个由Apache基金会开发的开源软件，具有可靠性、扩展性的分布式计算机存储系统，标志性Logo为一个黄色小象。</p>
+<h2 id="一hadoop简介">一、Hadoop简介</h2>
+<p>Hadoop系统实现了一个分布式文件系统（Hadoop Distributed File System, HDFS）。HDFS有高容错性的特点，并且设计用来部署在低廉的硬件上。它提供高吞吐量（High throughput）来访问应用程序的数据，适合那些有着超大数据集的应用程序。</p>
+<p>Hadoop的框架核心的设计师HDFS和MapReduce。HDFS为海量的数据提供了存储，而MapReduce为海量的数据提供了计算。</p>
+<p>Hadoop项目主要包括4个部分：</p>
+<ul>
+<li>Hadoop Common：支撑其他模块。</li>
+<li>Hadoop Distributed File System：分布式系统对应用提供高吞吐量的访问。</li>
+<li>Hadoop Yarn：资源管理和任务调度的一个框架。</li>
+<li>Hadoop MapReduce：能够并行处理大数据集的Yarn基本系统。</li>
+</ul>
+<h2 id="二hadoop体系架构">二、Hadoop体系架构</h2>
+<p>Hadoop是实现了分布并行处理任务的系统框架，Hadoop的核心组成是HDFS和MapReduce两个子系统，能够自动完成大任务计算和大数据存储的分割工作。</p>
+<p>HDFS系统是Hadoop的存储系统，能够实现创建文件、删除文件、移动文件等功能，操作的数据主要是要处理的原始数据以及计算过程中的中间数据，实现高吞吐率的数据读写。</p>
+<p>MapReduce系统是一个分布式计算框架，主要任务就是能够利用廉价的计算机对海量数据进行分解处理。</p>
+<h3 id="hdfs体系结构">2.1 HDFS体系结构</h3>
+<p>Hadoop 的体系结构主要是通过HDFS来实现对分布式存储的底层支持的，并且它会通过MapReduce来实现对分布式并行任务的程序支持。</p>
+<p>HDFS的体系结构，采用主从（Master/Slave）结构模型，一个HDFS集群是由一个NameNode若干个DataNode组成的。</p>
+<p>其中NameNode作为主服务器，管理文件系统的命名空间和客户端对文件的访问操作。</p>
+<p>集群中的DataNode管理存储的数据。当文件进行存储时，文件会被分割成若干个数据块，并且这些数据块会被存放在集群中的各个DataNode节点上。</p>
+<p>NameNode执行文件系统的命名空间操作，比如打开、关闭、重命名文件或目录等，负责数据块到具体DataNode上的映射。DataNode负责处理文件系统客户端的文件读写请求，并在NameNode的统一调度下进行数据块的创建、删除和复制工作。</p>
+<h3 id="mapreduce体系结构">2.2 MapReduce体系结构</h3>
+<p>MapReduce是一种并行编程模式，这种模式使得软件开发者可以轻松地编写出分布式并行程序。</p>
+<p>MapReduce的体系结果，也是采用主从（Master/Slave）结构模型，主要是由一个单独运行在主节点上的JobTracker进程和运行在每个集群从节点上的TaskTracker进程共同组成的。</p>
+<p>主节点JobTracker负责调度构成一个作业的所有任务，这些任务分布在不同的从节点TaskTracker上。主节点通过心跳机制（心跳，主从节点的通信时间间隔）监控它们的执行情况，并且重新执行之前失败的任务；从节点仅负责由主节点指派的任务。</p>
+<h2 id="三hadoop基本文件命令">三、Hadoop基本文件命令</h2>
+<p>Hadoop的文件命令采取的形式为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hadoop fs -cmd &lt;args&gt;</span><br></pre></td></tr></table></figure>
+<p>其中cmd是具体的文件命令，而&lt;args&gt;是一组数目可变的参数。</p>
+<p>cmd的命令通常与UNIX对应的命令相同。</p>
+<h3 id="添加文件和目录">3.1 添加文件和目录</h3>
+<p>在运行Hadoop程序处理存储在HDFS上的数据之前，需要先把数据放在HDFS上。</p>
+<p>例如，我们使用 mkdir 命令创建一个example的文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -mkdir /example</span><br></pre></td></tr></table></figure>
+<p>创建完成后，可以使用 ls 命令对目录进行检查，返回检测目录下的目录信息。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -ls /</span><br></pre></td></tr></table></figure>
+<p>建好目录后，可以使用 put 命令将本地文件复制到HDFS上。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -put example.txt /example</span><br></pre></td></tr></table></figure>
+<h3 id="检索文件">3.2 检索文件</h3>
+<p>Hadoop的 get 命令与 put 命令截然相反。它是从HDFS中复制文件到本地文件系统。比如，我们现在需要已经被本地删除掉的example.txt 这个文件，我们可以通过 get 命令，将其从HDFS上复制至本地文件系统。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -get example.txt</span><br></pre></td></tr></table></figure>
+<p>同样的，我们也可以使用 cat 命令，直接在HDFS上查看文件内容。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -cat example.txt</span><br></pre></td></tr></table></figure>
+<h3 id="删除文件">3.3 删除文件</h3>
+<p>当文件在HDFS上的任务完成后，可以考虑删除它们以释放空间。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -rm example.txt</span><br></pre></td></tr></table></figure>
+<p>Ps: 你可以执行hadoop fs (无参数) 来获取一个完整的命令列表。</p>
+<h1 id="四hadoop案例之wordcount">四、Hadoop案例之wordcount</h1>
+<p>用hadoop统计单词是hadoop自带的一个案例。</p>
+<h2 id="wordcount案例步骤">4.1 wordcount案例步骤</h2>
+<p>主要步骤如下：</p>
+<p><strong>（1）找到hadoop的share目录下的hadoop-mapreduce-examples-2.8.2.jar文件</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/Cellar/hadoop/2.8.2/libexec/share/hadoop/mapreduce</span><br></pre></td></tr></table></figure>
+<p><strong>（2）创建HDFS数据目录，一个用于输入，一个用于输出</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -mkdir -p /data/wordcount</span><br><span class="line">hadoop fs -mkdir /output</span><br></pre></td></tr></table></figure>
+<p>可以利用 hadoop fs -ls / 命令查看文件夹是否创建成功</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -ls /</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Found 2 items</p>
+<p>drwxr-xr-x - fengyu supergroup 0 2018-03-14 21:34 /data</p>
+<p>drwxr-xr-x - fengyu supergroup 0 2018-03-14 21:34 /output</p>
+</blockquote>
+<p><strong>（3）创建单词文件，并将其传入HDFS</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim myword.txt</span><br></pre></td></tr></table></figure>
+<p>编辑后，查看其内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat myword.txt</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>hello fengyu</p>
+<p>hello hadoop</p>
+<p>hello mapreduce</p>
+<p>fengyu first</p>
+</blockquote>
+<p>确认无误后，传入HDFS：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -put myword.txt /data/wordcount</span><br></pre></td></tr></table></figure>
+<p>通过命令 hadoop fs -ls /data/wordcount 查看是否传入成功</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -ls /data/wordcount</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Found 1 items</p>
+<p>-rw-r–r– 1 fengyu supergroup 55 2018-03-14 21:36 /data/wordcount/myword.txt</p>
+</blockquote>
+<p><strong>（4）运行wordcount程序</strong></p>
+<p>执行如下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop jar /usr/local/Cellar/hadoop/2.8.2/libexec/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.8.2.jar wordcount /data/wordcount /output/wordcount</span><br></pre></td></tr></table></figure>
+<p>运行完成后，可以查看 /output/wordcount 目录：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -ls /output/wordcount</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Found 2 items</p>
+<p>-rw-r–r– 1 fengyu supergroup 0 2018-03-14 21:45 /output/wordcount/_SUCCESS</p>
+<p>-rw-r–r– 1 fengyu supergroup 46 2018-03-14 21:45 /output/wordcount/part-r-00000</p>
+</blockquote>
+<p>查看 part-r-00000 文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -cat /output/wordcount/part-r-00000</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>fengyu 2</p>
+<p>first 1</p>
+<p>hadoop 1</p>
+<p>hello 3</p>
+<p>mapreduce 1</p>
+</blockquote>
+<p><strong>（5）统计结果和最初的 myword.txt 文件中的一样，统计完成</strong></p>
+<h2 id="wordcount案例问题">4.2 wordcount案例问题</h2>
+<p>在实施管理的过程中，遇到了<strong>新建文件夹不成功</strong>的问题。后经过Google得以顺利解决。</p>
+<blockquote>
+<p>org.apache.hadoop.hdfs.server.datanode.DataNode: Initialization failed for Block pool…</p>
+</blockquote>
+<p>通过google发现，大多数情况是属于DataNode启动失败。</p>
+<p><strong>首先，查看日志：</strong>打开hadoop，访问<a href="http://localhost:50070/" target="_blank" rel="noopener">http://localhost:50070</a>，点击页面中的Namenode logs链接，在logs页面点击hadoop-hadoop-datanode-ubuntu.log 链接。</p>
+<p><strong>然后，发现问题：</strong>根据日志显示记录发现（忘记保存截图了），是由于datanode的clusterID和namenode的clusterID不匹配。</p>
+<p><strong>最后，解决问题：</strong>cd进 /tem/dfs/ 目录下，将 name/current 下的VERSION中的clusterID复制到 data/current 下的VERSION中，覆盖掉原来的clusterID，使两个ID保持一致。然后重启，再执行jps，即可看到DataNode。问题得以解决。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/15/Time-Series-IV/" class="archive-article-date">
-  	<time datetime="2018-04-14T17:16:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/15/Time-Series-IV/">Time Series (IV)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Time Series</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Data Analysis</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">hadoop</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/05/06/hadoop-learning-01/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/15/Time-Series-III/" class="archive-article-date">
-  	<time datetime="2018-04-14T16:25:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-15</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/04/15/Time-Series-IV/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Time Series (IV)</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/15/Time-Series-III/">Time Series (III)</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Time Series</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Data Analysis</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/14/Time-Series-II/" class="archive-article-date">
-  	<time datetime="2018-04-14T15:57:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/14/Time-Series-II/">Time Series (II)</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Time Series</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Data Analysis</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/11/Time-Series-I/" class="archive-article-date">
-  	<time datetime="2018-03-11T14:37:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/11/Time-Series-I/">Time Series (I)</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Time Series</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Data Analysis</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -352,9 +444,9 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
