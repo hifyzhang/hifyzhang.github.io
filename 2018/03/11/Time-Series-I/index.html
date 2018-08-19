@@ -197,22 +197,25 @@
 </ul>
 <h4 id="趋势">2.1 趋势</h4>
 <p><strong>趋势</strong> 是指随着时间的变化，时间序列呈现自然增长或下降的状态。</p>
-<figure>
-<img src="https://www.ibm.com/support/knowledgecenter/zh/SS3RA7_17.1.0/modeler_mainhelp_client_ddita/components/images/trend01.jpg" alt="avatar"><figcaption>avatar</figcaption>
-</figure>
+<div class="figure">
+<img src="https://www.ibm.com/support/knowledgecenter/zh/SS3RA7_17.1.0/modeler_mainhelp_client_ddita/components/images/trend01.jpg" alt="avatar">
+<p class="caption">avatar</p>
+</div>
 <p>趋势既可以是 <strong>局部 </strong>的，也可以是 <strong>全局 </strong>的，而一个序列可以同时体现这两种趋势。从历史记录来看，股票市场指数的序列图总的趋势是上升的。经济萧条时期所表现出的是局部下降趋势，而经济繁荣时期表现出的是局部上升趋势。</p>
 <p>趋势既可以是 <strong>线性 </strong>的，也可以是 <strong>非线性 </strong>的。线性趋势是指序列水平表现为正增加或负增加，就和本金以单利计息差不多。非线性趋势通常表现为倍增，即相对于以前的序列值成比例地增长。</p>
 <h4 id="季节性周期">2.2 季节性周期</h4>
 <p><strong>季节性周期</strong> 是指时间序列出现一种可预测的重复模式。</p>
-<figure>
-<img src="https://www.ibm.com/support/knowledgecenter/zh/SS3RA7_17.1.0/modeler_mainhelp_client_ddita/components/images/season.jpg" alt="avatar"><figcaption>avatar</figcaption>
-</figure>
+<div class="figure">
+<img src="https://www.ibm.com/support/knowledgecenter/zh/SS3RA7_17.1.0/modeler_mainhelp_client_ddita/components/images/season.jpg" alt="avatar">
+<p class="caption">avatar</p>
+</div>
 <p>季节性周期与序列的时间间隔相联系。例如，月度数据通常会随季度和年度而循环。月度序列可能会表现出第一个季度较低的明显季度周期或每年十二月份都出现峰值的年度周期。表现出季节性周期的序列称之为具有 <strong>季节性 </strong>。</p>
 <h4 id="非季节性周期">2.3 非季节性周期</h4>
 <p><strong>非季节性周期</strong> 是指时间序列出现一种非可预测的重复模式。</p>
-<figure>
-<img src="https://www.ibm.com/support/knowledgecenter/zh/SS3RA7_17.1.0/modeler_mainhelp_client_ddita/components/images/cycle.jpg" alt="avatar"><figcaption>avatar</figcaption>
-</figure>
+<div class="figure">
+<img src="https://www.ibm.com/support/knowledgecenter/zh/SS3RA7_17.1.0/modeler_mainhelp_client_ddita/components/images/cycle.jpg" alt="avatar">
+<p class="caption">avatar</p>
+</div>
 <p>某些序列（如失业率）明显地表现出周期性行为；但这种周期性的周期会随时间而变化，因此很难预测何时高何时低。其他序列可能具有可预测的周期，但可能与阳历并不完全吻合，或者其周期比一年长。例如，潮汐遵循阴历，与奥林匹克运动会相关的国际旅游和贸易每隔四年膨胀一次，还有许多宗教节日，其阳历日期每年都会变化。</p>
 <h4 id="脉冲和步进">2.4 脉冲和步进</h4>
 <p><strong>脉冲</strong> 是指时间序列整体水平突然、<strong>临时性</strong> 的变动；</p>
@@ -481,6 +484,10 @@ MathJax.Hub.Queue(function() {
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">reading notes</a>
+              </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Time Series</a>

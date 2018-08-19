@@ -251,7 +251,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -ls /data/wordcount</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>Found 1 items</p>
-<p>-rw-r–r– 1 fengyu supergroup 55 2018-03-14 21:36 /data/wordcount/myword.txt</p>
+<p>-rw-r--r-- 1 fengyu supergroup 55 2018-03-14 21:36 /data/wordcount/myword.txt</p>
 </blockquote>
 <p><strong>（4）运行wordcount程序</strong></p>
 <p>执行如下命令：</p>
@@ -260,8 +260,8 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -ls /output/wordcount</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>Found 2 items</p>
-<p>-rw-r–r– 1 fengyu supergroup 0 2018-03-14 21:45 /output/wordcount/_SUCCESS</p>
-<p>-rw-r–r– 1 fengyu supergroup 46 2018-03-14 21:45 /output/wordcount/part-r-00000</p>
+<p>-rw-r--r-- 1 fengyu supergroup 0 2018-03-14 21:45 /output/wordcount/_SUCCESS</p>
+<p>-rw-r--r-- 1 fengyu supergroup 46 2018-03-14 21:45 /output/wordcount/part-r-00000</p>
 </blockquote>
 <p>查看 part-r-00000 文件</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -cat /output/wordcount/part-r-00000</span><br></pre></td></tr></table></figure>
@@ -276,7 +276,7 @@
 <h2 id="wordcount案例问题">4.2 wordcount案例问题</h2>
 <p>在实施管理的过程中，遇到了<strong>新建文件夹不成功</strong>的问题。后经过Google得以顺利解决。</p>
 <blockquote>
-<p>org.apache.hadoop.hdfs.server.datanode.DataNode: Initialization failed for Block pool…</p>
+<p>org.apache.hadoop.hdfs.server.datanode.DataNode: Initialization failed for Block pool...</p>
 </blockquote>
 <p>通过google发现，大多数情况是属于DataNode启动失败。</p>
 <p><strong>首先，查看日志：</strong>打开hadoop，访问<a href="http://localhost:50070/" target="_blank" rel="noopener">http://localhost:50070</a>，点击页面中的Namenode logs链接，在logs页面点击hadoop-hadoop-datanode-ubuntu.log 链接。</p>
@@ -385,6 +385,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2018/08/19/Reading-Notes-01/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          批判性思维入门：《学会提问》读书笔记
+        
+      </div>
+    </a>
   
   
     <a href="/2018/04/15/Time-Series-IV/" id="article-nav-older" class="article-nav-link-wrap">
@@ -533,6 +542,10 @@ MathJax.Hub.Queue(function() {
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">reading notes</a>
+              </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Time Series</a>

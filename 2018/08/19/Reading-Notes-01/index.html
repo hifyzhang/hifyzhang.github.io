@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Time Series (II) | Fengyu&#39;s Blog</title>
+  <title>批判性思维入门：《学会提问》读书笔记 | Fengyu&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这是时间序列的第二章，主要介绍的是时间序列的一个重要的问题：平稳性。">
-<meta name="keywords" content="Time Series,Data Analysis">
+  <meta name="description" content="批判性思维的入门经典书目。图书馆一直借不到，就自己买了一本。 读完之后，低于预期，篇幅有点过于冗长，翻译的质量也不好。 但是，收获还是有一些的。下面是这本书的一个读书笔记。">
+<meta name="keywords" content="reading notes">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Time Series (II)">
-<meta property="og:url" content="http://yoursite.com/2018/04/14/Time-Series-II/index.html">
+<meta property="og:title" content="批判性思维入门：《学会提问》读书笔记">
+<meta property="og:url" content="http://yoursite.com/2018/08/19/Reading-Notes-01/index.html">
 <meta property="og:site_name" content="Fengyu&#39;s Blog">
-<meta property="og:description" content="这是时间序列的第二章，主要介绍的是时间序列的一个重要的问题：平稳性。">
+<meta property="og:description" content="批判性思维的入门经典书目。图书馆一直借不到，就自己买了一本。 读完之后，低于预期，篇幅有点过于冗长，翻译的质量也不好。 但是，收获还是有一些的。下面是这本书的一个读书笔记。">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-04-14T16:28:13.000Z">
+<meta property="og:updated_time" content="2018-08-19T06:36:01.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Time Series (II)">
-<meta name="twitter:description" content="这是时间序列的第二章，主要介绍的是时间序列的一个重要的问题：平稳性。">
+<meta name="twitter:title" content="批判性思维入门：《学会提问》读书笔记">
+<meta name="twitter:description" content="批判性思维的入门经典书目。图书馆一直借不到，就自己买了一本。 读完之后，低于预期，篇幅有点过于冗长，翻译的质量也不好。 但是，收获还是有一些的。下面是这本书的一个读书笔记。">
   
     <link rel="alternative" href="/atom.xml" title="Fengyu&#39;s Blog" type="application/atom+xml">
   
@@ -151,64 +151,218 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Time-Series-II" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Reading-Notes-01" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Time Series (II)
+      批判性思维入门：《学会提问》读书笔记
     </h1>
   
 
         
-        <a href="/2018/04/14/Time-Series-II/" class="archive-article-date">
-  	<time datetime="2018-04-14T15:57:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-14</time>
+        <a href="/2018/08/19/Reading-Notes-01/" class="archive-article-date">
+  	<time datetime="2018-08-19T06:30:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-19</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>这是时间序列的第二章，主要介绍的是时间序列的一个重要的问题：平稳性。</p>
+        <p>批判性思维的入门经典书目。图书馆一直借不到，就自己买了一本。</p>
+<p>读完之后，低于预期，篇幅有点过于冗长，翻译的质量也不好。</p>
+<p>但是，收获还是有一些的。下面是这本书的一个读书笔记。</p>
 <a id="more"></a>
-<h2 id="二时间序列的主要概念">二、时间序列的主要概念</h2>
-<h3 id="时间序列的平稳性">2.1 时间序列的平稳性</h3>
-<h4 id="随机过程">2.1.1 随机过程</h4>
-<p>一个<strong>随机过程</strong>就是随机变量按时间编排的集合。比如说1970年第一季度的GDP为28728亿美元。理论上讲，1970点第一季度的GDP数字可能是任何一个数字，取决于当时的政治与经济环境，而数字28728只是所有这些可能性中的一个特定的<strong>实现</strong>。因此，我们可以说，GDP是一个随机过程。在时间序列中，我们利用这些实现对其背后的随机过程加以推断。</p>
-<h4 id="平稳随机过程">2.1.2 平稳随机过程</h4>
-<p>广泛地讲，若一个随机过程的均值和方差在时间过程上保持是常数，并且在任何两时期之间的协方差值仅依赖于该两时期间的距离或滞后，而不依赖于计算这个协方差的实际时间，则称之为<strong>平稳随机过程</strong>（stationary stochastic process）。</p>
-<p>如果一个时间序列按上述定义不是平稳的，则称之为<strong>非平稳时间序列</strong>（nonstationary time series），也就是说，一个非平稳时间序列指要么均值随时间而变化，要么方差随时间而变化，或者二者同时在发生变化。</p>
-<h3 id="平稳性的检测方法">2.2 平稳性的检测方法</h3>
-<p>尽管平稳性检验的方法存在多种，但是我们这里只研究在文献中广泛讨论的三种检验方式：</p>
-<p>（1）图示分析</p>
-<p>（2）相关图检验</p>
-<p>（3）单位根检验</p>
-<h4 id="图示分析">2.2.1 图示分析</h4>
-<p>图示分析是一种操作简便、运用广泛的平稳性判别方法，但是判别结论容易带有一定的主观性，所以最好能辅以统计检验方法进行判断。</p>
-<p>根据平稳时间序列均值和方差为常数的性质可知，平稳时间序列的时序图应该显示出该序列始终在一个常数值附近随机波动，而且波动的范围有明显的相似性特点。如果时序图显示出该序列有明显的趋势性或者周期性，那么它通常不是平稳序列。根据这个性质，很多非平稳序列通过查看时序图就可以被识别出来。</p>
-<h4 id="自相关函数和相关图">2.2.2 自相关函数和相关图</h4>
-<p>有一种平稳性检验，它基于所谓的<strong>自相关函数(ACF)</strong> （autocorrelation function）。由于实际上我们只有随机过程的一个实现（即样本），所以我们只能计算出<strong>样本自相关函数(SACF)</strong>（sample autocorrelation function），<span class="math display">\[ \hat p_k\]</span> 。</p>
-<p>为了计算它，我们必须首先计算<span class="math display">\[k\]</span>阶滞后的<strong>样本协方差</strong> <span class="math display">\[\hat \gamma_k\]</span> 和<strong>样本方差</strong> <span class="math display">\[\hat \gamma_0\]</span> ，其定义分别为：</p>
-<p><span class="math display">\[\hat \gamma_k ={\sum(Y_t - \overline Y)\over n}\]</span></p>
-<p><span class="math display">\[\hat \gamma_0 = {\sum (Y_t - \overline Y)^2\over n}\]</span></p>
-<p>其中，<span class="math display">\[n\]</span> 为样本容量，<span class="math display">\[\overline Y\]</span> 为样本均值。因此，<span class="math display">\[k\]</span> 阶样本自相关函数就是：</p>
-<p><span class="math display">\[\hat \rho_k = {\hat \gamma_k\over \hat \gamma_0}\]</span></p>
-<p>它无非就是<span class="math display">\[k\]</span> 阶样本协方差与样本方差之比。将<span class="math display">\[\hat \rho_k\]</span> 对<span class="math display">\[k\]</span> 的描点则称之为<strong>样本相关图</strong>。</p>
-<p>自相关函数是用来描述时间序列中不同观测之间的线性相关程度的，平稳时间序列通常都具有短期相关性，具体描述就是随着延迟期数k的增加，平稳序列的自相关系数 <span class="math display">\[\hat \rho_k\]</span> 会很快衰减向零。反之，非平稳序列的自相关系数衰减向零的速度通常比较慢。</p>
-<h4 id="单位根检验">2.2.3 单位根检验</h4>
-<p>单位根检验是指检验序列中是否存在单位根，若存在单位根则说明属于非平稳序列，会使回归分析中存在伪回归。检验单位根的方法主要包括DF检验（Dickey-Fuller test）和ADF检验（Augmented Dickey-Fuller test）等方法。</p>
-<p>这里值得注意的问题在于，DF/ADF检验的<span class="math inline">\(H_0\)</span>假设，与通常在计量经济学中遇到的其他问题的<span class="math inline">\(H_0\)</span>假设不同，这里的假设为，存在单位根（即不好的方面的假设）。</p>
-<h3 id="对非平稳时间序列进行变换">2.3 对非平稳时间序列进行变换</h3>
-<p>为了避免将一个非平稳时间序列对一个或多个非平稳时间序列回归所导致的谬误回归问题，我们必须对非平稳时间序列进行变换，使之成为平稳序列。变化的方法主要是<strong>差分平稳</strong>以及<strong>趋势平稳</strong>。</p>
-<h4 id="差分平稳">2.3.1 差分平稳</h4>
-<p>若一个时间序列具有一个单位根，则这种时间序列的一阶差分就是平稳的（若有两个单位根，则需要进行两次差分，以此类推，通常一阶差分就平稳了）。</p>
-<h4 id="趋势平稳">2.3.2 趋势平稳</h4>
-<p>使这种时间序列变平稳的最简单的办法就是将它对时间做回归，从此回归中得到的残差将是平稳的。</p>
-<p>注意：若一个时间序列是差分平稳过程，而我们把它当作趋势平稳过程来处理，这种情况被称为<strong>差分不足</strong>（underdifferencing）。另一方面，若一个时间序列是趋势平稳过程而我们把它当作差分平稳过程处理，则称之为<strong>过度差分</strong>（overdifferencing）。</p>
-<h3 id="协整">2.4 协整</h3>
-<p>协整是指，尽管两个或多个时间序列个别而论是非平稳的，但它们的线性组合则可以是平稳的。对协整的检验方法有许多，通常使用EG检验或AEG检验，即对从协整回归中估计出来的残差进行DF或ADF单位根检验。</p>
+<h1 id="一学会提问">一、学会提问</h1>
+<p>首先，什么是批判性思维呢？</p>
+<p>根据wikipedia的解释：</p>
+<blockquote>
+<p>Critical thinking is the objective analysis of facts to form a judgment. The subject is complex, and several different definitions exist, which generally include the rational, skeptical, unbiased analysis, or evaluation of factual evidence.</p>
+</blockquote>
+<p>所谓批判性思维，就是对自己耳闻目见的一切进行系统的评判。</p>
+<p>批判性思维主要分为两类，一类是<strong>弱势批判性思维</strong>，目的就是抵制和驳倒那些与自己意见不同的观点和论述；一类是<strong>强势批判性思维</strong>，它要求我们用关键性问题一视同仁地质疑一切主张，包括我们自己的主张。</p>
+<h1 id="二找准作者的结论">二、找准作者的结论</h1>
+<p>在我们客观评价一个人的分析推理之前，首先必须找到他的分析推理之所在。</p>
+<h2 id="论题和结论">1、论题和结论</h2>
+<p>要成为会批判性思考问题的人，第一步就得培养找准论题和结论的能力。</p>
+<p><strong>论题</strong>，就是引发讨论的问题或争议。主要分为两大类问题，一是<strong>描述性论题</strong>，主要是有关世界过去、现在或未来是什么样的问题；二是<strong>规辩性论题</strong>，主要是有关世界应该是什么样的问题。</p>
+<p>但是往往很多问题并不总是直截了当地提出来，必须得从交流和会话的其他暗示中进行推断。当论题没有被直接了当的说出来时，最有效的方法就是先找准结论。<strong>我们只有找准结论才能进行客观评价。</strong></p>
+<p>找到结论有线索可循：</p>
+<p>线索一：<strong>问问论题是什么。</strong></p>
+<p>线索二：<strong>寻找指示词。</strong>结论前面常有指示词引导，常见的指示词有因此、由此得出、表明、我要说的重点是、证明、问题的实质是等。</p>
+<p>线索三：<strong>在可能的位置查看一下。</strong>结论一般都在文章的开头和结尾出现。</p>
+<p>线索四：<strong>记住不可能作为结论的东西。</strong>比如说：例句、数据、定义、背景资料、证据等</p>
+<p>线索五：<strong>检查一下交流的语境和作者的背景。</strong></p>
+<p>线索六：<strong>问一问“所以呢”。</strong>问一下“作者是不是要我们从他所提供的信息里面找出隐含的结论”。</p>
+<h2 id="理由">2、理由</h2>
+<p>所谓理由，就是指用来支撑或证明结论的看法、证据、隐喻、类比和其他陈述。<strong>只有当你找到支撑结论的理由时，你才能判定一个结论的价值。</strong>找到支撑结论的理由时批判性思维必不可少的一个步骤。</p>
+<p>首先，对结论提问：为什么这个结论有道理，为什么作者相信这一结论？</p>
+<p>其次，寻找理由的提示词。表示理由的提示词常有：由于、因为这个原因、因为这个事实、鉴于、由以下材料支撑、因为证据是、研究显示、第一第二第三等。</p>
+<p>最后，请记住：结论本身并不是证据，它是一个由证据或其他看法支撑起来的看法。</p>
+<h1 id="三探索作者的分析过程">三、探索作者的分析过程</h1>
+<p>虽然找到结论和理由已经为我们提供了基本清晰的论证结构，但是还需要进一步检查这些部分的确切含义，然后才能公正地评价呈现在你面前的信息。</p>
+<h2 id="词语表达">1、词语表达</h2>
+<p>准确辨认关键词或短语的确切含义是决定你是否同意别人观点的必要步骤。如果你没有仔细核对起决定性作用的术语或词组的意思，也许你所评价的观点和作者的愿意压根儿就风马牛不相及。</p>
+<ul>
+<li>检查论题，看有没有关键词</li>
+<li>在理由和结论中寻找关键词或短语</li>
+<li>留意抽象的词或短语</li>
+<li>通过反串来判断别人怎样给特定的词或短语下不同的定义</li>
+</ul>
+<p>例如，下面这一则广告：“大家牌”催眠药：30分钟见效。</p>
+<p>论题：你应该购买什么样的催眠药？</p>
+<p>结论（暗含）：购买“大家牌”催眠药。</p>
+<p>理由：30分钟见效。</p>
+<p>但是，<strong>“见效”</strong>这个词的意思却不是很清晰。它可能意味着这种催眠药让你昏昏欲睡，它也可能意味着这种催眠药让你一下子昏睡过去，知道第二天早上也醒不来，或者还有许多其他的意思。对于批判性思考的人而言，<strong>只有出现在分析推理过程中，意思不明确的词才最为关键。</strong></p>
+<p>在我们自己写作过程中，也要时刻留意歧义，<strong>尽量采用一个来自不同文化的人或一个有不同政见的人的思维框架。从另一个的视角来探究你的论证，可能会把你的注意力吸引到你之前并没有意识到的不明确之处。</strong></p>
+<h2 id="论证假设">2、论证假设</h2>
+<p>在所有的论证中，都有一些作者认为是理所当然的特定想法。但通常情况下作者却不会明说出来，我们只有再字里行间仔细推敲才能发现它们。这些想法是推理结构中重要的无形纽带，是将整个论证联系在一起的黏合剂。它们回答了一个非常重要的问题：“必须得有什么样的想法才能将理由和结论从逻辑上联系起来？”只有当你提供了这些联系之后，你才能真正理解这一论证。</p>
+<p><strong>价值观假设</strong>：是指一种想当然的看法，认为某些相互对立的价值观中一个比另一个更重要。价值观假设随情境的改变而改变，它们在一种情况下适用，而一旦规定性论题的具体条件发生改变，我们就可能采用非常不同的价值倾向。</p>
+<p>找出价值观假设的其他线索：（1）调查作者的背景；（2）问一下“为什么作者的立场产生的结果对他而言显得那样重要”；（3）寻找类似的社会辩论，看看同类的价值观假设；（4）使用反串的方法，采取与作者相反的立场，看看哪些价值观对这一相反立场显得更加重要；（5）找一找常见的价值观冲突，例如个体责任和集体责任之间的冲突。</p>
+<p><strong>描述性假设</strong>：就是对这个世界过去、现在或未来是什么样的想法。</p>
+<p>发现描述性假设的一些线索：（1）不断思考理由和结论之间的鸿沟；（2）寻找支持理由的那些想法；（3）把自己放到对立的反对立场；（4）意识到还有其他潜在的方法可以获得理由中提到的种种好处；（5）对论题进一步学习了解。</p>
+<h2 id="证据效力">3、证据效力</h2>
+<table>
+<thead>
+<tr class="header">
+<th align="center">主要的证据类型</th>
+<th align="center">效力</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">直觉</td>
+<td align="center">缺乏坚实的基础来判断该相信哪些</td>
+</tr>
+<tr class="even">
+<td align="center">个人经历</td>
+<td align="center">个人经历常常会导致我们犯下以偏概全谬误</td>
+</tr>
+<tr class="odd">
+<td align="center">典型案例</td>
+<td align="center">生动具体的案例诉诸我们的情感，它们分散了我们的注意力，让我们不再纠结于它们作为证据</td>
+</tr>
+<tr class="even">
+<td align="center">当事人证词</td>
+<td align="center">当事人证词也是一种形式的个人经历，通常它的用处并不大</td>
+</tr>
+<tr class="odd">
+<td align="center">权威或专家意见</td>
+<td align="center">对于所谈论的这个主题，改专家所拥有的专长、训练或特别知识到底有多少？</td>
+</tr>
+<tr class="even">
+<td align="center">个人观察</td>
+<td align="center">个人观察都是经过一系列的价值观、偏见、态度和期望值过滤后剩下来的东西</td>
+</tr>
+<tr class="odd">
+<td align="center">研究报告</td>
+<td align="center">理想的科学研究是我们获得证据的一个最好的来源</td>
+</tr>
+<tr class="even">
+<td align="center">类比</td>
+<td align="center">如果通过另一件事做对比来得出一件事的结论，那么就应该提供进一步的证据来支撑两者间最重要的相似点揭示出的具体原则</td>
+</tr>
+</tbody>
+</table>
+<p><strong>总而言之，就是证据一定要客观、科学、可验证和精确。</strong></p>
+<h2 id="推理过程">4、推理过程</h2>
+<p>通过之前一系列的分析之后，现在的主要问题是：按照提供的理由来看，这个结论到底在多大程度上可以被接收？</p>
+<p>记住：<strong>批判性阅读和聆听的主要目标就在于判定结论的可接受程度或价值大小。</strong></p>
+<p>有三种常见的推理过程中的“诡计花招”：</p>
+<p>（1）提供的推理需要明显错误的或者让人不能接受的假设才能成立，因此使推理和结论显得毫无关系。</p>
+<p>（2）把那些明明和结论无关的信息弄得好像和结论有关，以此来分散我们的注意力。</p>
+<p>（3）看似为结论找证据，而证据算数的前提则取决于结论本身已经成立。</p>
+<p>推理中的谬误常有：</p>
+<p>（1）<strong>人生攻击谬误：</strong>指针对个人的人身攻击或侮辱，而不是直接反驳其提供的理由。</p>
+<p>（2）<strong>滑坡式谬误：</strong>指假设采取提议的行动会引发一系列不可控的不利事件，而事实上却有现成的程序来防止这类连锁事件发生。</p>
+<p>（3）<strong>追求完美解决方案谬误：</strong>指假设因为尝试某种解决方案后还有遗留问题未解决，那么这种解决方案根本就不应该采用。</p>
+<p>（4）<strong>偷换概念谬误：</strong>指在论证中关键词语有两种或两种以上的含义，一旦不同含义之间的转换被认出来，这个论证就讲不通了。</p>
+<p>（5）<strong>诉诸公众谬误：</strong>指通过引述大部分人都持有这一观点的说法来竭力证明某个论断有道理，错误地假设大部分人喜欢的一切就是有道理的、可以接受的。</p>
+<p>（6）<strong>诉诸可疑权威谬误：</strong>指引用某一权威的话来证明结论，但该权威对这一论题并没有特别的专门知识。</p>
+<p>（7）<strong>诉诸感情谬误：</strong>指使用带强烈感情色彩的语言来分散读者或听众的注意力，让他们忽视相关的理由和证据。常被用来加以利用的感情有害怕、希望、爱国主义、怜悯和同情。</p>
+<p>（8）<strong>稻草人谬误：</strong>指歪曲对方的观点，使它容易受到攻击，这样我们攻击的观点事实上根本就不存在。</p>
+<p>（9）<strong>虚假的两难选择谬误：</strong>指当现实中存在两种以上的选择时，却假设只有两种解决方案。</p>
+<p>（10）<strong>乱扣帽子谬误：</strong>指错误地假设因为我们为特定事件或行为提供了一个名称，你也就合情合理地解释了这一事件。</p>
+<p>（11）<strong>光环效应谬误：</strong>指使用模糊、引发人们强烈感情认同的美德词汇，使我们倾向于同意某件事而不去细致检查其理由。</p>
+<p>（12）<strong>转移话题谬误：</strong>指一个不相干的话题被插进来，将注意力从原来的论题上面转移走，通过将注意力转移到另一个论题上来帮助赢得一场论战。</p>
+<p>（13）<strong>循环论证谬误：</strong>指在推理过程中已然假设自己的结论成立的论证。</p>
+<h1 id="四寻找更多合理的结论">四、寻找更多合理的结论</h1>
+<h2 id="替代原因">1、替代原因</h2>
+<p>只有一开始就理解了某件事的前因后果，我们才能选择一个明智的办法来避免某个问题的发生，或者促使某个特别正面的结果出现。</p>
+<p>（1）很多类型的事件都可以通过各种相互替代的原因来加以解释</p>
+<p>（2）专家可以检查同一个证据而发现不同的原因对其加以解释</p>
+<p>（3）大部分持论者只给你那些他们喜欢的原因，独立思考的读者或听众必须自己找出替代原因</p>
+<p>（4）想出替代原因是个创造性的过程，通常情况下，这类证据不会是一目了然的</p>
+<p>（5）最后，特定因果断言的确定性和言之成理的替代原因的数量正好成反比。因此，找到多个替代原因可以让批判性思考的人真正变得理智而谦逊</p>
+<p>请记住，我们找出的任何一个单独的原因都极有可能是引起事件发生的其中一个原因，而不是其唯一的原因。</p>
+<p>另外，我们在思考原因的过程中，不要忽视<strong>组间差异</strong>，也要记住<strong>相关不能证明因果关系</strong>。</p>
+<h2 id="数据欺骗">2、数据欺骗</h2>
+<p>作为一个批判性思考的人，我们应该努力辨别出错误的统计数据式的推理。统计数据证据显得非常具有科学性，非常精确，似乎它就代表了“事实”，但是统计数据经常非常具有迷惑性。</p>
+<p>（1）不知来历和带有偏见的数据。例如，最近一个新闻写到，40%的大学生饱受抑郁症的折磨。<strong>在对这样的数据做出反应之前，我们要先问一声它们是怎么得来的。</strong></p>
+<p>（2）把一个结论改头换面包装成另外一个结论。例如，在临床试验中，服用此药物的100例人员当中仅有6名报告有药物副作用。生产这种药物的公司说：“94%的人服用后有了显著积极的效果。”<strong>我们要有自己的思考，根据这种数据，可以得到什么结论；或者要证明这种结论，需要用到什么样的数据。</strong></p>
+<p>（3）省略数据也是欺骗。例如，就在去年，小镇上的大公司书目增长了75%。这个比例很吸引眼球，但是百分比代表的只是一个比例值，我们没办法判断这种增长是从4家增长到了7家，还是从12家增长到了21家。<strong>不要被纯百分比和纯数量值给欺骗了，要从相对于绝对两个方面综合考虑。</strong></p>
+<h2 id="重要信息">3、重要信息</h2>
+<p>除了在寻找作者重要的信息之外，还要做一件很重要的事情，那就是跳出作者设定的思维方式，认真的想一想，<strong>有没有什么重要信息被省略了。</strong></p>
+<p>这里所说的重要的省略信息，是指那些将会影响到你该不该被作者或者演说者的论证所影响的信息，也就是那些影响到你的推理过程的信息。</p>
+<p>当我们在寻找一些省略信息时，可以使用这样一种方式：利用生活当中的各色人，尤其是那些持有不同价值取向和世界观的人，考虑他们需要什么样的信息才会接受目前的结论。</p>
+<p>找到一些常见类型的重要信息的一些提示：</p>
+<p>1.常见的反驳论证：</p>
+<ul>
+<li>反对的人会提供什么样的理由？</li>
+<li>有没有研究和所说的研究相冲突？</li>
+<li>有没有备受尊敬的权威人士提供的例子、证词和观点被省略掉，或者支持论证的对立面的类比被省略？</li>
+</ul>
+<p>2.遗漏掉的定义：</p>
+<ul>
+<li>如果关键词用另一种方式定义，这个论证会有怎么样的不同？</li>
+</ul>
+<p>3.遗漏的价值观偏向或视角：</p>
+<ul>
+<li>不同的价值观会不会产生处理这一论题的不同方法？</li>
+<li>从与说话者或作者不同的价值观出发会产生怎样的论证？</li>
+</ul>
+<p>4.论证中所指的“事实”的来源：</p>
+<ul>
+<li>这些“事实”的来源是什么？</li>
+<li>事实断言是不是由出色的研究或者可靠的来源支撑？</li>
+</ul>
+<p>5.用来获得事实的程序细节：</p>
+<ul>
+<li>有多少人完成这个问卷调查？</li>
+<li>调查的问题是怎样措辞的？</li>
+<li>调查对象有没有大量的机会来提供与问卷选项不同的答案？</li>
+</ul>
+<p>6.收集或组织证据的其他技巧：</p>
+<ul>
+<li>访谈研究得来的结果和书面问卷调查得到的结果可能有怎样的不同？</li>
+<li>实验室实验会不会产生更可靠更丰富的结果？</li>
+</ul>
+<p>7.遗漏掉的或者不完整的数字、图表、表格或者数据：</p>
+<ul>
+<li>如果数据包含早期或者后来的证据看起来会不会不一样？</li>
+<li>作者有没有故意“拉长”数字让差距显得更大一些？</li>
+</ul>
+<p>8.省略的结果，不管是正面或者反面结果，短期或长期结果，还是提倡或反对的结果：</p>
+<ul>
+<li>论证有没有遗落了提议的行动所带来的重要的正面或反面结果？代价是什么？好处又是什么？</li>
+<li>我们需不需要知道行动对下列任何一个领域的影响：政治、经济、社会、生物、精神、健康、环境？</li>
+</ul>
+<p>9.当为特殊的预测技巧进行辩护时省略掉预测的失败，或者预测的失误：</p>
+<ul>
+<li>当“通灵巫师”或者“直觉主义者”推销他们的特异能力时，我们需要追问他们的预测被证明不真实的概率有多少？</li>
+<li>我们需要知道经济学家、理财顾问、体验运动博彩人士和政治权威人士预测失败的概率，如同要知道他们成功的概率一样，然后我们才能得出结论说他们拥有特殊才干。</li>
+</ul>
+<h2 id="更多结论">4、更多结论</h2>
+<p>我们很少遇到一种只能从中推断出一个合情合理的结论的情形。因此，我们必须要确定最终采纳的结论最合乎情理，和自己的价值取向最吻合一致。只要我们发现了其他更多的备选结论，就能更加有备无患地从一大堆可选的结论当中发现那个最说得通的结论了。</p>
+<p>寻找更多的结论也有一些小技巧：</p>
+<p>（1）努力找出从理由当中可以推导出的尽可能多的结论</p>
+<p>可以使用“什么时候”、“什么地方”、“为什么”等问题来帮助你得出备选结论</p>
+<p>（2）使用条件句来限定备选的结论</p>
+<p>条件句有助于为评价型的论证找到合理的结论，比如对音乐、艺术、演说质量的论证，因为这些论证需要我们在使用什么标准来进行评价，而这一些标准，就是条件句设立的不同条件。</p>
+<p>（3）重新将论题表述为“我们该怎样来处理乙问题”</p>
+<p>eg. 我们要不要关闭市中心地区的酒吧？答案必然是“是”，自从这些酒吧开业以来，已经有十几个年轻的大学生深受究竟中毒的折磨了。这是一个“我们应该采取什么方法来解决一部分大学生深受酒精中毒折磨”这个问题，但是，我们还可以将问题转化为其他方向，得到“我们应该严格执行饮酒年龄的限制，对卖究竟饮料给未成年人的酒吧施加罚款”这一结论。</p>
 
       
 
@@ -243,11 +397,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Time Series</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Data Analysis</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">reading notes</a>
         		</li>
       		
 		</ul>
@@ -303,7 +453,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/04/14/Time-Series-II/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/08/19/Reading-Notes-01/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -317,18 +467,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/04/15/Time-Series-III/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Time Series (III)
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/03/11/Time-Series-I/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Time Series (I)</div>
+    <a href="/2018/05/06/hadoop-learning-01/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hadoop初体验之wordcount</div>
       <i class="icon-circle-right"></i>
     </a>
   

@@ -207,9 +207,10 @@
 <p>利用ARIMA(1,1,1)进行拟合：</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">model = ARIMA(ts, (<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>)).fit()</span><br><span class="line"><span class="keyword">print</span> model.summary()</span><br><span class="line"><span class="keyword">print</span> model.forecast(<span class="number">5</span>)[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
 <p>运行结果如下：</p>
-<figure>
-<img src="https://github.com/hifyzhang/mypic/blob/master/time%20series%20arima/result.png?raw=true" alt="avatar"><figcaption>avatar</figcaption>
-</figure>
+<div class="figure">
+<img src="https://github.com/hifyzhang/mypic/blob/master/time%20series%20arima/result.png?raw=true" alt="avatar">
+<p class="caption">avatar</p>
+</div>
 <p>同样也利用forecast方法，对根据通过检验的模型来进行预测分析。</p>
 
       
@@ -475,6 +476,10 @@ MathJax.Hub.Queue(function() {
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">reading notes</a>
+              </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Time Series</a>
