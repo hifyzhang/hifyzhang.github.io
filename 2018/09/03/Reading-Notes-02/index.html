@@ -6,22 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Time Series (IV) | Fengyu&#39;s Blog</title>
+  <title>动态思考战略：《战略节奏》读书笔记 | Fengyu&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这是时间序列的第四章，主要介绍的是时间序列的模型构造步骤，以ARIMA模型为例，介绍了一个简单的案例。 同时，本时间序列这个专题内容已经全部写完。">
-<meta name="keywords" content="Time Series,Data Analysis">
+  <meta name="description" content="《战略节奏》 朱恒源 杨斌等著. 机械工业出版社 2018 这是读的第一本系统性的战略研究方面的书籍，收获颇丰。 整个书的内容结构清晰，逻辑性强，推荐阅读。 下面是这本书的读书笔记.">
+<meta name="keywords" content="raeding notes">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Time Series (IV)">
-<meta property="og:url" content="http://yoursite.com/2018/04/15/Time-Series-IV/index.html">
+<meta property="og:title" content="动态思考战略：《战略节奏》读书笔记">
+<meta property="og:url" content="http://yoursite.com/2018/09/03/Reading-Notes-02/index.html">
 <meta property="og:site_name" content="Fengyu&#39;s Blog">
-<meta property="og:description" content="这是时间序列的第四章，主要介绍的是时间序列的模型构造步骤，以ARIMA模型为例，介绍了一个简单的案例。 同时，本时间序列这个专题内容已经全部写完。">
+<meta property="og:description" content="《战略节奏》 朱恒源 杨斌等著. 机械工业出版社 2018 这是读的第一本系统性的战略研究方面的书籍，收获颇丰。 整个书的内容结构清晰，逻辑性强，推荐阅读。 下面是这本书的读书笔记.">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:image" content="https://github.com/hifyzhang/mypic/blob/master/time%20series%20arima/result.png?raw=true">
-<meta property="og:updated_time" content="2018-04-22T13:35:01.000Z">
+<meta property="og:updated_time" content="2018-09-03T13:26:38.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Time Series (IV)">
-<meta name="twitter:description" content="这是时间序列的第四章，主要介绍的是时间序列的模型构造步骤，以ARIMA模型为例，介绍了一个简单的案例。 同时，本时间序列这个专题内容已经全部写完。">
-<meta name="twitter:image" content="https://github.com/hifyzhang/mypic/blob/master/time%20series%20arima/result.png?raw=true">
+<meta name="twitter:title" content="动态思考战略：《战略节奏》读书笔记">
+<meta name="twitter:description" content="《战略节奏》 朱恒源 杨斌等著. 机械工业出版社 2018 这是读的第一本系统性的战略研究方面的书籍，收获颇丰。 整个书的内容结构清晰，逻辑性强，推荐阅读。 下面是这本书的读书笔记.">
   
     <link rel="alternative" href="/atom.xml" title="Fengyu&#39;s Blog" type="application/atom+xml">
   
@@ -153,65 +151,101 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Time-Series-IV" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Reading-Notes-02" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Time Series (IV)
+      动态思考战略：《战略节奏》读书笔记
     </h1>
   
 
         
-        <a href="/2018/04/15/Time-Series-IV/" class="archive-article-date">
-  	<time datetime="2018-04-14T17:16:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-15</time>
+        <a href="/2018/09/03/Reading-Notes-02/" class="archive-article-date">
+  	<time datetime="2018-09-03T13:16:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-03</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>这是时间序列的第四章，主要介绍的是时间序列的模型构造步骤，以ARIMA模型为例，介绍了一个简单的案例。</p>
-<p>同时，本时间序列这个专题内容已经全部写完。</p>
+        <p>《战略节奏》 朱恒源 杨斌等著. 机械工业出版社 2018</p>
+<p>这是读的第一本系统性的战略研究方面的书籍，收获颇丰。</p>
+<p>整个书的内容结构清晰，逻辑性强，推荐阅读。</p>
+<p>下面是这本书的读书笔记.</p>
 <a id="more"></a>
-<h2 id="四时间序列分析的基本步骤">四、时间序列分析的基本步骤</h2>
-<p>这个基本步骤主要以构建简单的ARIMA模型为主。主要采用的是Python下的numpy，pandas，matplotlib，statsmodels这四个包来进行分析操作。</p>
-<p>（1）<strong>数据的准备</strong>。选择统计口径一致的时间序列数据。</p>
-<p>本文使用的案例数据为1960年至1990年美国WPI物价指数，按照季度进行统计。</p>
-<p><a href="https://github.com/hifyzhang/mypic/blob/master/time%20series%20arima/wpi.csv" target="_blank" rel="noopener">数据地址</a></p>
-<p>导入需要使用的模块：</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> statsmodels.tsa.stattools <span class="keyword">import</span> adfuller <span class="keyword">as</span> ADF</span><br><span class="line"><span class="keyword">import</span> statsmodels.tsa.stattools <span class="keyword">as</span> st</span><br><span class="line"><span class="keyword">from</span> statsmodels.tsa.arima_model <span class="keyword">import</span> ARIMA</span><br></pre></td></tr></table></figure>
-<p>读取wpi.csv数据：</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># read time series data</span></span><br><span class="line">df = pd.read_csv(<span class="string">'wpi.csv'</span>, index_col = <span class="string">'time'</span>)</span><br><span class="line"><span class="keyword">print</span> df.tail()</span><br><span class="line">df.plot()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<p>（2）<strong>平稳性识别与平稳化处理</strong>。观测时间序列数据的散点图、自相关函数、偏自相关函数、ADF单位根检验、趋势变化，对时间序列的平稳性进行识别（一般而言，时间序列都不是平稳序列）。如果数据序列是非平稳的，并且存在一定的增长或下降的趋势，则需要对数据进行差分处理；如果数据存在异方差，则需要对数据进行技术处理，直到处理后的数据的自相关函数值和偏相关函数值无显著地异于零。</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ts = df[<span class="string">'wpi'</span>]</span><br><span class="line">diff_df = df.diff().dropna()</span><br><span class="line">diff_ts = diff_df[<span class="string">'wpi'</span>]</span><br><span class="line">adftest = ADF(diff_ts)</span><br><span class="line"><span class="keyword">print</span> adftest</span><br><span class="line">diff_df.plot()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<p>通过作图可以发现数据为非平稳数据，进行一阶差分后，通过ADF检验发现，在90%的置信区间下，不存在单位根，数据为平稳数据。</p>
-<p>（3）<strong>模型的选择</strong>。针对平稳序列，根据时间序列模型的识别规则，建立相应的模型。</p>
-<p>对于ARIMA(p,d,q)模型中的p与q，可以通过自相关与偏相关函数图观测得出。选择依据如下：</p>
+<h1 id="在市场发展中识别用户">在市场发展中识别用户</h1>
+<p>人口规模并不能等同于潜在的市场规模。人群中的潜在用户不是同质的，他们有不同的类型，各个类型的用户在人群中占有不同的比例，有着不同的特点和不同的偏好。在特定的人群中，按照接受新产品的先后顺序，用户可以分为创新者（发烧友）、早期采用者（时尚派）、早期多数（实用者）、晚期多数（挑剔客）和落伍者（保守派）。这些迥异的用户在不同的时间进入市场，使得市场在不同期，总量规模、成长速度以及需求结构等方面也各不相同。</p>
+<h2 id="创新者发烧友">创新者：发烧友</h2>
 <ul>
-<li><p>若平稳序列的偏相关函数是截尾的，而自相关函数是拖尾的，则可以选择序列适合的AR模型；</p></li>
-<li><p>若平稳序列的偏相关函数是拖尾的，而自相关函数是截尾的，则可以选择序列适合的MA模型；</p></li>
-<li><p>若平稳序列的偏相关函数和自相关函数均是拖尾的，则序列适合ARMA模型。</p></li>
+<li>创新者对企业的最大价值，是他们可以为产品改进贡献意见</li>
+<li>虽然创新者客户群体对产品收入和利润的贡献不大，但是寻找自己新产品的第一瓶用户，对于企业来说非常重要</li>
 </ul>
-<p>同时，也可以通过赤池信息准则（Akaike Information Criterion，AIC）和贝叶斯信息准则（Bayesian Information Criterion，BIC）。</p>
-<p>AIC是衡量统计模型拟合优良性的一种标准，由日本统计学家赤池弘次在1974年提出，它建立在熵的概念上，提供了权衡估计模型复杂度和拟合数据优良性的标准。BIC与AIC相似，用于模型选择，1978年由Schwarz提出。训练模型时，增加参数数量，也就是增加模型复杂度，会增大似然函数，但是也会导致过拟合现象，针对该问题，AIC和BIC均引入了与模型参数个数相关的惩罚项，BIC的惩罚项比AIC的大，考虑了样本数量，样本数量过多时，可有效防止模型精度过高造成的模型复杂度过高。</p>
-<p>本文这里主要采用的是BIC方式：</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">order = st.arma_order_select_ic(diff_ts, max_ar = <span class="number">5</span>, max_ma = <span class="number">5</span>, ic = <span class="string">'bic'</span>)</span><br><span class="line">p_q = order.bic_min_order</span><br><span class="line"><span class="keyword">print</span> <span class="string">'arma(p,q) is '</span>, p_q</span><br></pre></td></tr></table></figure>
-<p>当然，你也可以通过观测自相关函数图与偏自相关函数图来确定：</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> statsmodels.graphics.tsaplots <span class="keyword">import</span> plot_acf, plot_pacf</span><br><span class="line">plot_acf(diff_ts)</span><br><span class="line">plot_pacf(diff_ts)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<p>我们通过BIC方式得到的p与q的值分别为1，1。</p>
-<p>到此，我们确定利用ARIMA(1,1,1)模型进行拟合。</p>
-<p>（4）<strong>模型拟合</strong>。通过确定好的模型，进行参数估计，检验是否具有统计意义。</p>
-<p>利用ARIMA(1,1,1)进行拟合：</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">model = ARIMA(ts, (<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>)).fit()</span><br><span class="line"><span class="keyword">print</span> model.summary()</span><br><span class="line"><span class="keyword">print</span> model.forecast(<span class="number">5</span>)[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
-<p>运行结果如下：</p>
-<div class="figure">
-<img src="https://github.com/hifyzhang/mypic/blob/master/time%20series%20arima/result.png?raw=true" alt="avatar">
-<p class="caption">avatar</p>
-</div>
-<p>同样也利用forecast方法，对根据通过检验的模型来进行预测分析。</p>
+<h2 id="早期采用者时尚派">早期采用者：时尚派</h2>
+<ul>
+<li>与技术狂热的发烧友不同，早期采用者对创新本身并不热衷。他们是“不想落伍”的“时尚主义者”</li>
+<li>他们是创新产品从发烧友小众市场走向大众市场的关键一环。追逐时尚的特点，使他们一端连接着发烧友；在人群中的号召力，使他们另一端连接着真正的大众</li>
+<li>通常说的市场起飞，就是在早期采用者这个阶段，因为一旦早期采用者进入市场，市场就基本成型，甚至有望成为风口</li>
+<li>早期采用者不像创新者那样在乎产品的性能，也不像大众用户那样在乎实用性，他们对品质和价格不太敏感，但他们对档次非常在意</li>
+</ul>
+<h2 id="早期多数积极的实用者">早期多数：积极的实用者</h2>
+<ul>
+<li>早期多数是一些积极的实用者。他们并不反感新产品，只不过他们要确认新产品是否符合实际需要；他们会在相互竞争的产品或服务中进行比较，不是出于挑剔的眼光，而是出于建设性的态度</li>
+<li>实用者的购买决策是审慎的，基于长期消费的考量，他们会比较在乎购买某一产品后相关的配套服务和配套设施是否完善</li>
+<li>态度积极的实用者一旦采用某一个厂商的产品，一般不会轻易更换，他们具有较高的忠诚度。这是因为，他们一旦熟悉了某一个品牌的产品，如果不是在性价比上有很大的差异，不会愿意冒险尝试其他厂商的产品</li>
+<li>赢得实用者的青睐，需要企业有较好的历史记录、较强的品牌实力、完善的售后服务、庞大的营销渠道，以及优质实用的产品</li>
+</ul>
+<h2 id="晚期多数挑剔客">晚期多数：挑剔客</h2>
+<ul>
+<li>挑剔客对技术和高性能没太多热情，对购买新产品不积极。他们希望产品能完全满足其使用需求，而且价格还要低廉</li>
+<li>在晚期多数用于占据主流的市场，问题不仅仅在于消费者眼光挑剔，对产品有他们自己的看法，更棘手的是不同的挑剔客对产品可能有着完全不同的看法和需求</li>
+<li>这个阶段市场最显著的特点就是，市场上新增用户的需求开始出现分化。由于这类用户数量庞大，因此只要区分科学，美中细分产品也可以具有规模经济</li>
+</ul>
+<h2 id="落伍者保守派">落伍者：保守派</h2>
+<ul>
+<li>如果说挑剔客对于创新的态度是不信任，而保守派则是抵制。他们习惯于怀念过去，而不是放眼未来，他们并不在意厂家或者早期使用者的经验分享。他们对新产品的反映往往是，这有什么呀，过去我们没有，不也照样过得很好 新产品被用户接受是一个过程，不同类型的人由于不同的社会环境、不同的认识、不同的生活态度会在特定的时间对特定产品呈现不同的接受程度。 大量研究表明，任何产品或服务的市场会经历一个从无到有、从小到大的发展过程，而市场的成长过程，实际上就是不断累积用户的过程。如果这一产品或服务以前在这个社会经济体系中未曾被采用过，市场的成长过程就可以看成该产品或服务作为一个创新在市场中被接受的过程。 对企业而言，首要的问题是识别出自己提供的产品或服务此时此刻的主流用户，要对他们非常熟悉，熟悉到从“背影”就能把他们准确地认出来。</li>
+</ul>
+<h1 id="跟踪产品市场成长">跟踪产品市场成长</h1>
+<p>不同类型的用户在不同时间进入市场，把“钟形曲线”分布的新增用户累积起来，就得到市场发展的“S形曲线”。在市场发展的过程中，用户和产品同时双边演进，使得市场发展呈现明显的阶段性。从市场导入期到衰退期，可以分为小众市场、大众市场、分众市场和杂合市场四个阶段。不同的阶段，发展速度、市场规模、需求结构各不相同。阶段的转换是市场演进中结构性变化节点，不同的阶段，胜出的企业需要不同的竞争力组合。这是企业发展必须识别和提前布局的关键战略节点。中国是发展中的新兴市场，容量巨大、发展不平衡等特点，使得指数逻辑和线性逻辑的转变尤为鲜明，形成“两头平长、中间陡峭”的中国模式。</p>
+<h2 id="小众市场">小众市场</h2>
+<p>小众市场阶段用户主要是发烧友和早期的时尚派。找到用户、锁定用户、打磨产品是小众市场企业的关键。 当产品逐渐成熟，早期时尚派开始成为用户的时候，企业要及时地从为发烧用提供“极客产品”转到为时尚派提供“时尚产品”，推出稳定的产品，并打上“独特品味”的标签。 这一时期，与新产品匹配的产业链还不成熟，利用现有的产业网络，并且留意新产业链的建设，是企业必须要处理好的一个重要问题。 定位不准、过早地消耗大量资源，是企业成功渡过小众市场阶段必须避免的错误。</p>
+<h2 id="大众市场">大众市场</h2>
+<p>大众市场发展速度快速增长，市场规模也迅速增大，需求一致性很高，这是以实用者为主流用户的广阔天地。 供不应求是大众市场典型的态势，尤其是初期，企业只要把产品生产出来，就能很快卖出去。“全速”扩张产能是企业获得竞争优势的关键。相应地，营销和渠道的重点是，在尽量短的时间抵达尽量多的潜在用户。 广阔的大众市场也并非是一马平川，市场连续增长中的陷进更不易发觉。初期，时尚派用户和实用者用户之间存在鸿沟，他们的偏好不同，生产出打动实用者用户的产品才能顺利开启大众市场。在告诉增长中，如果企业不能跟随市场变化，错过了产品的更新换代，就会在“供不应求”的整体形态下，却因“产能过剩”而饮恨折戟。</p>
+<h2 id="分众市场">分众市场</h2>
+<p>分众市场，挑剔客是主要的新增用户，需求开始分化，市场增速放缓，但市场容量依然很大。厂商通过科学的戏份和精准的定位，为恰当的细分市场用户提供有价值的产品。洞悉需求的能力与高效率产品开发的能力是分众市场企业胜出的关键能力。 在产业链结构上，分众市场阶段会出现聚焦于产品设计的专门公司，分工更加精细，整个产业结构在产品开发上效率比以往更高。 分众市场阶段，缺乏对市场需求的把握，产品过度细分，或盲目对标竞争对手的热销产品，会使企业失焦，远离市场需求而不自知，疲于应付，深陷泥潭。</p>
+<h2 id="杂合市场">杂合市场</h2>
+<p>杂合市场阶段，产品的扩散接近尾声，新增用户是人群中最后接受创新的保守派。市场增速趋近于零，但是市场规模仍然客观，主要由重复购买支撑。 需求更加多样化、碎片化，市场呈现出如五颜六色马赛克拼合般的景观。产业链结构更加复杂，出现了平台企业和依附于平台之上的应用商，以适应高度碎片化的市场环境。平台型企业的出现，形成用户和应用商两个S曲线的协同错综发展，需求、创新和竞争态势都更加复杂了。 杂合市场是市场发展的最后阶段，新的重大创新突破将会迎来另一轮市场的发展。</p>
+<h1 id="中国企业的战略节奏">中国企业的战略节奏</h1>
+<p>产品市场竞争的焦点在迅速转换，在某一阶段中稀缺的、能够为企业带来竞争优势的关键要素，随着产业内部能力的积累或者需求态势的转变，在下一个阶段可能已经是广泛分布的一般性要素。 因此，中国企业如果想要保持基业长青，需要动态地抢先发展或者整合市场中稀缺的关键竞争要素，不断更新和重组自身能力组合，以使自身的战略节奏与市场发展的节奏相契合。这是一个持续的、有节奏的过程，也是动态的战略管理过程。</p>
+<h2 id="农耕者">农耕者</h2>
+<p>农耕者企业，立足于特定的产品市场，随着市场发展阶段的不同而调整自己的能力和资源组合，以适应不同阶段的竞争态势，满足不同阶段的市场需求，从而获得跨期的成功。 就像农民一样，农耕者企业要熟悉耕耘的土地，学会“看云识天气”的本领，这样才能感知市场的变化，为即将到来的新阶段做好准备。熬过艰难的时光，才能迎来收获，做好储备抵御寒冬，农耕者企业要跟随市场的节奏来调度资源、调整步伐。每次关键竞争力的变革都需要组织架构和管理方式的支撑。顺利地实现战略转型是农耕者企业成功的前提。</p>
+<h2 id="狩猎者">狩猎者</h2>
+<p>狩猎者企业，并不立足于特定的产品市场，它们基于自身独特的能力或资源，在不同的产品市场中寻找增长机遇。 狩猎者企业在自身的独特优势成为市场中的关键竞争要素的时候进入市场，在市场阶段变化，该能力不再是稀缺关键能力的时候退出，然后继续寻找下一个行业。它们像猎人一样，练就独特的捕猎本领，在不同行业寻找机会。能否评估自身优势和市场竞争态势，能否识别和把握进入和退出市场的时机，是狩猎者企业能否获得成功的关键。认知偏差或时机不对很可能带来无法承受的失败。除此之外，狩猎者企业还要学会如果度过两个市场机会之间的惨淡时期。</p>
+<h2 id="圈地者">圈地者</h2>
+<p>圈地者企业同时在不同行业中投入，在不同的产品市场中追逐机会。多行业布局，需要庞大的资源支撑，成功的圈地者企业，一般都成长为“巨无霸”。 圈地者企业通常会保有大量的资源、人才和组织冗余，以保证企业强大的抗风险能力。快速的学习能力和敏捷的切换能力，是圈地者企业能够同时驾驭不同的业务的基础保证。此外，要建立业务之间发展周期的互补，在某项业务需要持续投入的时候，保证有来自其他业务收入的支持。同时要避免多个业务同时陷入高投入的黑洞，否则即便是巨无霸也会被拖垮。实践中，企业会根据自身状况和市场发展在这三种典型路径间转换，选取最有利于当前态势的发展模式。</p>
+<h1 id="重新思考战略">重新思考战略</h1>
+<p>经济和技术发的发展，极大地改变了，并且正在改变着我们的生产和生活。这是一个商业生态日益复杂而繁茂、联系日益密切而广泛的全球化时代。身处其中的企业家，比历史上任何时候都需要更加宽广的战略视野和更加辽阔的战略空间。研究商业的学者同样需要一个广角的、全视阈的分析框架，帮助自己更清晰地认识日益繁复新奇的商业现象。</p>
+<h2 id="pre-m市场三角模型">PRE-M市场三角模型</h2>
+<p>我们不应把视线局限在产品市场，而是要全视阈地考察产品市场（product market，PM）、要素/资源市场（resource market，RM）、股权市场（equity market，EM）这三个市场的联系与互动。这就是PRE-M市场三角模型。</p>
+<p>在PRE-M模型的视野中，考察企业的战略，从下面三个问题开始：</p>
+<ul>
+<li>产品市场有什么结构性机会？</li>
+<li>要素市场有什么结构洞？</li>
+<li>股权市场有什么估值洼地？</li>
+</ul>
+<p>不同的发展阶段，市场发展的速度、市场的规模、需求的形态都有明显的差异，所谓结构性机会，就蕴藏在这些阶段的转换里，这里有结构性变化的结点，<strong>那是线性逻辑转变为指数逻辑的时刻</strong>。识别产品市场的结构性机会，是企业把握战略节奏的第一步。</p>
+<p>当需求的结构性变化使得市场上关键竞争要素变化时，在整个产业链中价值结构就会变化，过去不重要的某一部分、某一能力会忽然变得重要。供应端的变化是粘滞的，此时市场上的大部分企业并不具备这样的能力，产业链网络中这样的能力也没有完全发育，看上去，就像整个产业价值网络中出现一个“洞”似的。<strong>因此，我们把产业链中，即将成为、尚未普遍发展的关键竞争要素称为此时产业要素网络/市场上的“结构洞”</strong>。发现要素市场上的结构洞是把握产品市场结构性机会的关键一步。</p>
+<p>股权市场上的估值洼地就是要素市场结构洞的一个体现。结构性的改变带来对要素价值的重估。<strong>所谓的“估值洼地”产生于市场上对同一标的估值的分歧</strong>。估值洼地，在跨市场中表现得更为明显，在发达国家或地区的成熟市场中，某一要素不再具备关键竞争地位，然而如果和中国这样的新兴市场对接，它很可能会产生更大的价值。</p>
+<p>产品市场、要素市场和股权市场，三者是相互结合、相互联系的。在产品市场中，对市场发展的研判，识别市场发展阶段，发现结构性机会；在要素市场中，寻找结构洞；在股权市场中，寻找估值洼地，去锁定和捕获结构性机会。</p>
+<h2 id="战略思考">战略思考</h2>
+<ul>
+<li>战略思考，就是要“越过”那些“正常”的思考，克服思维定式，反思以往的成绩和行为，重新审视公司的业务，去发掘变革的方向和路径。</li>
+<li>商业是高度情景化的实践，商业学科中的知识，在很大程度上，是按学科的逻辑规范整理的“后见之明”。当我们习得这些“规范化”的知识，会不自觉地接受知识设定的逻辑框架，带上知识和观念的“透镜”，通过这些“透镜”去审视和观察现实，做“去粗存精”的化简和剪裁，很多所谓的“枝枝蔓蔓”都被剪裁掉了。<strong>战略思考要反思、审视、克服这些难以察觉的观念和思维定式的影响，在具体的情景中，“进行时”地区去发现、发明新的愿景。</strong></li>
+<li>战略思考并不一定产出具体的战略，要紧的是转变思维。克服思维定式，从“照旧经营”（business-as-usual）的“例行”中跳脱开来，不再迷恋“过去的好办法”，去重新定义组织的愿景与未来。</li>
+<li>战略思考首先是一种对趋势、对形势的把握和洞察，还包括对情势、对能势的评估和判断。战略思考后的战略调适，最终是要落脚在组织的变革上。</li>
+</ul>
 
       
 
@@ -246,11 +280,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Time Series</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Data Analysis</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">raeding notes</a>
         		</li>
       		
 		</ul>
@@ -306,7 +336,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/04/15/Time-Series-IV/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/09/03/Reading-Notes-02/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -320,18 +350,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/05/06/hadoop-learning-01/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Hadoop初体验之wordcount
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/04/15/Time-Series-III/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Time Series (III)</div>
+    <a href="/2018/08/19/Reading-Notes-01/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">批判性思维入门：《学会提问》读书笔记</div>
       <i class="icon-circle-right"></i>
     </a>
   

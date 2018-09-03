@@ -6,22 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Time Series (IV) | Fengyu&#39;s Blog</title>
+  <title>Tag: raeding notes | Fengyu&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这是时间序列的第四章，主要介绍的是时间序列的模型构造步骤，以ARIMA模型为例，介绍了一个简单的案例。 同时，本时间序列这个专题内容已经全部写完。">
-<meta name="keywords" content="Time Series,Data Analysis">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Time Series (IV)">
-<meta property="og:url" content="http://yoursite.com/2018/04/15/Time-Series-IV/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Fengyu&#39;s Blog">
+<meta property="og:url" content="http://yoursite.com/tags/raeding-notes/index.html">
 <meta property="og:site_name" content="Fengyu&#39;s Blog">
-<meta property="og:description" content="这是时间序列的第四章，主要介绍的是时间序列的模型构造步骤，以ARIMA模型为例，介绍了一个简单的案例。 同时，本时间序列这个专题内容已经全部写完。">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:image" content="https://github.com/hifyzhang/mypic/blob/master/time%20series%20arima/result.png?raw=true">
-<meta property="og:updated_time" content="2018-04-22T13:35:01.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Time Series (IV)">
-<meta name="twitter:description" content="这是时间序列的第四章，主要介绍的是时间序列的模型构造步骤，以ARIMA模型为例，介绍了一个简单的案例。 同时，本时间序列这个专题内容已经全部写完。">
-<meta name="twitter:image" content="https://github.com/hifyzhang/mypic/blob/master/time%20series%20arima/result.png?raw=true">
+<meta name="twitter:title" content="Fengyu&#39;s Blog">
   
     <link rel="alternative" href="/atom.xml" title="Fengyu&#39;s Blog" type="application/atom+xml">
   
@@ -153,218 +146,60 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Time-Series-IV" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      Time Series (IV)
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2018" class="archive-year">2018</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2018/09/03/Reading-Notes-02/" class="archive-article-date">
+  	<time datetime="2018-09-03T13:16:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-03</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2018/09/03/Reading-Notes-02/">动态思考战略：《战略节奏》读书笔记</a>
     </h1>
   
 
-        
-        <a href="/2018/04/15/Time-Series-IV/" class="archive-article-date">
-  	<time datetime="2018-04-14T17:16:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>这是时间序列的第四章，主要介绍的是时间序列的模型构造步骤，以ARIMA模型为例，介绍了一个简单的案例。</p>
-<p>同时，本时间序列这个专题内容已经全部写完。</p>
-<a id="more"></a>
-<h2 id="四时间序列分析的基本步骤">四、时间序列分析的基本步骤</h2>
-<p>这个基本步骤主要以构建简单的ARIMA模型为主。主要采用的是Python下的numpy，pandas，matplotlib，statsmodels这四个包来进行分析操作。</p>
-<p>（1）<strong>数据的准备</strong>。选择统计口径一致的时间序列数据。</p>
-<p>本文使用的案例数据为1960年至1990年美国WPI物价指数，按照季度进行统计。</p>
-<p><a href="https://github.com/hifyzhang/mypic/blob/master/time%20series%20arima/wpi.csv" target="_blank" rel="noopener">数据地址</a></p>
-<p>导入需要使用的模块：</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> statsmodels.tsa.stattools <span class="keyword">import</span> adfuller <span class="keyword">as</span> ADF</span><br><span class="line"><span class="keyword">import</span> statsmodels.tsa.stattools <span class="keyword">as</span> st</span><br><span class="line"><span class="keyword">from</span> statsmodels.tsa.arima_model <span class="keyword">import</span> ARIMA</span><br></pre></td></tr></table></figure>
-<p>读取wpi.csv数据：</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># read time series data</span></span><br><span class="line">df = pd.read_csv(<span class="string">'wpi.csv'</span>, index_col = <span class="string">'time'</span>)</span><br><span class="line"><span class="keyword">print</span> df.tail()</span><br><span class="line">df.plot()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<p>（2）<strong>平稳性识别与平稳化处理</strong>。观测时间序列数据的散点图、自相关函数、偏自相关函数、ADF单位根检验、趋势变化，对时间序列的平稳性进行识别（一般而言，时间序列都不是平稳序列）。如果数据序列是非平稳的，并且存在一定的增长或下降的趋势，则需要对数据进行差分处理；如果数据存在异方差，则需要对数据进行技术处理，直到处理后的数据的自相关函数值和偏相关函数值无显著地异于零。</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ts = df[<span class="string">'wpi'</span>]</span><br><span class="line">diff_df = df.diff().dropna()</span><br><span class="line">diff_ts = diff_df[<span class="string">'wpi'</span>]</span><br><span class="line">adftest = ADF(diff_ts)</span><br><span class="line"><span class="keyword">print</span> adftest</span><br><span class="line">diff_df.plot()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<p>通过作图可以发现数据为非平稳数据，进行一阶差分后，通过ADF检验发现，在90%的置信区间下，不存在单位根，数据为平稳数据。</p>
-<p>（3）<strong>模型的选择</strong>。针对平稳序列，根据时间序列模型的识别规则，建立相应的模型。</p>
-<p>对于ARIMA(p,d,q)模型中的p与q，可以通过自相关与偏相关函数图观测得出。选择依据如下：</p>
-<ul>
-<li><p>若平稳序列的偏相关函数是截尾的，而自相关函数是拖尾的，则可以选择序列适合的AR模型；</p></li>
-<li><p>若平稳序列的偏相关函数是拖尾的，而自相关函数是截尾的，则可以选择序列适合的MA模型；</p></li>
-<li><p>若平稳序列的偏相关函数和自相关函数均是拖尾的，则序列适合ARMA模型。</p></li>
-</ul>
-<p>同时，也可以通过赤池信息准则（Akaike Information Criterion，AIC）和贝叶斯信息准则（Bayesian Information Criterion，BIC）。</p>
-<p>AIC是衡量统计模型拟合优良性的一种标准，由日本统计学家赤池弘次在1974年提出，它建立在熵的概念上，提供了权衡估计模型复杂度和拟合数据优良性的标准。BIC与AIC相似，用于模型选择，1978年由Schwarz提出。训练模型时，增加参数数量，也就是增加模型复杂度，会增大似然函数，但是也会导致过拟合现象，针对该问题，AIC和BIC均引入了与模型参数个数相关的惩罚项，BIC的惩罚项比AIC的大，考虑了样本数量，样本数量过多时，可有效防止模型精度过高造成的模型复杂度过高。</p>
-<p>本文这里主要采用的是BIC方式：</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">order = st.arma_order_select_ic(diff_ts, max_ar = <span class="number">5</span>, max_ma = <span class="number">5</span>, ic = <span class="string">'bic'</span>)</span><br><span class="line">p_q = order.bic_min_order</span><br><span class="line"><span class="keyword">print</span> <span class="string">'arma(p,q) is '</span>, p_q</span><br></pre></td></tr></table></figure>
-<p>当然，你也可以通过观测自相关函数图与偏自相关函数图来确定：</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> statsmodels.graphics.tsaplots <span class="keyword">import</span> plot_acf, plot_pacf</span><br><span class="line">plot_acf(diff_ts)</span><br><span class="line">plot_pacf(diff_ts)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<p>我们通过BIC方式得到的p与q的值分别为1，1。</p>
-<p>到此，我们确定利用ARIMA(1,1,1)模型进行拟合。</p>
-<p>（4）<strong>模型拟合</strong>。通过确定好的模型，进行参数估计，检验是否具有统计意义。</p>
-<p>利用ARIMA(1,1,1)进行拟合：</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">model = ARIMA(ts, (<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>)).fit()</span><br><span class="line"><span class="keyword">print</span> model.summary()</span><br><span class="line"><span class="keyword">print</span> model.forecast(<span class="number">5</span>)[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
-<p>运行结果如下：</p>
-<div class="figure">
-<img src="https://github.com/hifyzhang/mypic/blob/master/time%20series%20arima/result.png?raw=true" alt="avatar">
-<p class="caption">avatar</p>
-</div>
-<p>同样也利用forecast方法，对根据通过检验的模型来进行预测分析。</p>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Time Series</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Data Analysis</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">raeding notes</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/04/15/Time-Series-IV/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2018/05/06/hadoop-learning-01/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Hadoop初体验之wordcount
-        
-      </div>
-    </a>
   
   
-    <a href="/2018/04/15/Time-Series-III/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Time Series (III)</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -387,9 +222,9 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
