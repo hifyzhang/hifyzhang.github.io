@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Fengyu&#39;s Blog</title>
+  <title>《数据驱动：从方法到实践》读书笔记 | Fengyu&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Fengyu&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="《数据驱动：从方法到实践》 桑文锋 著. 电子工业出版社 2018 这是一本基于作者在百度的工作经验以及神策数据的产品写的一部给运营岗看的书，干货不多，大多知识点都来自于《精益数据分析》，适合缺乏运营灵感时，翻一下，活跃一下思维使用。 下面是这本书的读书笔记。">
+<meta name="keywords" content="reading notes">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《数据驱动：从方法到实践》读书笔记">
+<meta property="og:url" content="http://yoursite.com/2018/10/30/Reading-Notes-03/index.html">
 <meta property="og:site_name" content="Fengyu&#39;s Blog">
+<meta property="og:description" content="《数据驱动：从方法到实践》 桑文锋 著. 电子工业出版社 2018 这是一本基于作者在百度的工作经验以及神策数据的产品写的一部给运营岗看的书，干货不多，大多知识点都来自于《精益数据分析》，适合缺乏运营灵感时，翻一下，活跃一下思维使用。 下面是这本书的读书笔记。">
 <meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2018-10-30T14:15:41.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Fengyu&#39;s Blog">
+<meta name="twitter:title" content="《数据驱动：从方法到实践》读书笔记">
+<meta name="twitter:description" content="《数据驱动：从方法到实践》 桑文锋 著. 电子工业出版社 2018 这是一本基于作者在百度的工作经验以及神策数据的产品写的一部给运营岗看的书，干货不多，大多知识点都来自于《精益数据分析》，适合缺乏运营灵感时，翻一下，活跃一下思维使用。 下面是这本书的读书笔记。">
   
     <link rel="alternative" href="/atom.xml" title="Fengyu&#39;s Blog" type="application/atom+xml">
   
@@ -146,16 +151,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-Reading-Notes-03" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-Reading-Notes-03" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/30/Reading-Notes-03/">《数据驱动：从方法到实践》读书笔记</a>
+    <h1 class="article-title" itemprop="name">
+      《数据驱动：从方法到实践》读书笔记
     </h1>
   
 
@@ -171,11 +174,355 @@
         <p>《数据驱动：从方法到实践》 桑文锋 著. 电子工业出版社 2018</p>
 <p>这是一本基于作者在百度的工作经验以及神策数据的产品写的一部给运营岗看的书，干货不多，大多知识点都来自于《精益数据分析》，适合缺乏运营灵感时，翻一下，活跃一下思维使用。</p>
 <p>下面是这本书的读书笔记。</p>
-        
-          <a class="article-more-a" href="/2018/10/30/Reading-Notes-03/#more">more >></a>
-        
+<a id="more"></a>
+<h2 id="一大数据思维与数据驱动">一、大数据思维与数据驱动</h2>
+<h3 id="一大数据的概念">（一）大数据的概念</h3>
+<ul>
+<li>大数据之“大”：强调宏观的“大”，而非一味追求数据量的“大”</li>
+<li>大数据之“全”：强调多种数据源</li>
+<li>大数据之“细”：强调数据多维</li>
+<li>大数据之“时”：强调实时数据采集和实时数据分析的价值</li>
+</ul>
+<h3 id="二大数据的本质">（二）大数据的本质</h3>
+<p>随着各种前沿技术的发展，我们的思维方式已经从最直接的决策方式——拍脑袋、因果驱动转化为数据驱动。直接向数据要答案，这就是大数据思维。我们获取的数据越全面，就越能消除更多的不确定性。</p>
+<p>大数据的本质是消除不确定性。</p>
+<h3 id="三数据驱动理念与现状">（三）数据驱动理念与现状</h3>
+<h4 id="数据驱动价值">1、数据驱动价值</h4>
+<p>从提升业务的角度来看，数据驱动的价值归结为两点：</p>
+<ul>
+<li>驱动决策。通过数据来帮助拍板，包括产品改进、运营优化、营销分析和商业决策等。</li>
+<li>驱动产品智能。我们有了一定的数据基础，然后再上面套一个算法模型，再将得到的数据结果反馈到产品中。</li>
+</ul>
+<h4 id="理想的数据驱动流">2、理想的数据驱动——“流”</h4>
+<p>1）数据接入</p>
+<p>2）数据传输（实时/批量）</p>
+<p>3）数据建模/存储</p>
+<p>4）数据统计/分析/挖掘</p>
+<p>5）数据可视化/反馈</p>
+<h3 id="四大数据时代到来的条件">（四）大数据时代到来的条件</h3>
+<ul>
+<li>数据采集能力增强：移动互联网的发展、传感器的发展与普及</li>
+<li>数据处理能力增强：摩尔定律</li>
+<li>数据意识的提升：大数据时代正在引发深刻的思维转变</li>
+</ul>
+<h2 id="二数据驱动的环节">二、数据驱动的环节</h2>
+<h3 id="一数据的采集与埋点">（一）数据的采集与埋点</h3>
+<h4 id="数据采集的现状">1、数据采集的现状</h4>
+<ul>
+<li>困惑：如何采、采哪些、用什么手段</li>
+<li>痛苦：埋点混乱，常规埋错、漏埋</li>
+<li>无奈：数据团队和业务工程团队配合困难</li>
+</ul>
+<h4 id="科学的数据采集和埋点方式">2、科学的数据采集和埋点方式</h4>
+<ul>
+<li>可视化/全埋点（无埋点）：1）可视化展示宏观指标，满足基本数据分析需求；2）技术门槛低，使用与部署较简单；3）用户友好性强</li>
+<li>代码埋点：更适合精细化分析的场景，为保证核心数据的准确性，更推荐“后端埋点”</li>
+<li>导入辅助工具</li>
+</ul>
+<h4 id="数据的准确性">3、数据的准确性</h4>
+<p>数据不准确的原因有以下几种情况：</p>
+<p>1）网络异常，造成部分数据丢失</p>
+<p>2）统计口径不同</p>
+<p>3）代码质量问题：SDK在某些情况下不能被有效调用，或者重复发送</p>
+<p>4）无效请求：恶意攻击，爬虫抓取</p>
+<p>提升数据准确性的具体策略包括以下几个方面：</p>
+<p>1）采集关键行为，推荐后端埋点</p>
+<p>2）进行事件设计和明确统计口径，保证统计数据的质量</p>
+<p>3）需要具有完善的元数据管理和埋点管理</p>
+<p>4）通过多为分析能力快速定位异常</p>
+<h3 id="二数据分析方法">（二）数据分析方法</h3>
+<p>基于多维事件模型，会形成一些常见的数据分析方法。在用户行为领域，对这些数据分析方法的科学应用进行理论推导，能够相对完整地揭示用户行为的内在规律。基于此帮助企业实现多维交叉分析，让企业建立快速反应、适应变化的敏捷商业智能决策。</p>
+<h4 id="行为事件分析">1、行为事件分析</h4>
+<p>1）行为事件分析的定义</p>
+<p>行为事件分析法用来研究某行为事件的发生对企业组织价值的影响以及影响程度。通过研究与事件发生关联的所有因素来挖掘用户行为事件背后的原因、交互影响等。</p>
+<p>行为事件分析涉及事件、维度和指标三个概念。</p>
+<p>2）行为事件分析模型的特点与价值</p>
+<p>行为事件分析法具有强大的筛选、分组和聚合能力，逻辑清晰且使用简单，已被广泛应用。行为事件分析法一般经过事件定义与选择、多维度下钻分析、解释与结论等环节。</p>
+<ul>
+<li>事件定义与选择。事件描述的是一个用户在某个时间点、某个地方、以某种方式完成了某个具体的事情。who，when，where，what，how是定义一个事件的关键因素。</li>
+<li>多维度下钻分析。当行为事件分析合理配置追踪事件和属性，可以激发出事件分析的强大潜能，为企业回答关于变化趋势、维度对比等各种细分问题。</li>
+<li>解释与结论。</li>
+</ul>
+<h4 id="漏斗分析">2、漏斗分析</h4>
+<p>1）漏斗分析的定义</p>
+<p>漏斗分析是一套流程分析，它能够科学反映用户的行为状态以及从起点到终点各阶段用户转化率情况的重要分析模型。</p>
+<p>2）漏斗分析模型的特点与价值</p>
+<ul>
+<li>企业可以监控用户在各个层级的转化情况</li>
+<li>多维度切分与呈现用户转化情况，成单瓶颈无处遁形</li>
+<li>不同属性的用户群体漏斗比较，从差异角度窥视优化思路</li>
+</ul>
+<p>3）在漏斗分析方法中，科学归因、属性关联的重要性</p>
+<h4 id="留存分析">3、留存分析</h4>
+<p>1）留存分析的定义</p>
+<p>留存分析是一种用来分析用户参与情况和活跃程度的分析模型，考察进行初始行为的用户中，有多少人会进行后续行为。</p>
+<p>2）留存分析模型特点与价值</p>
+<ul>
+<li>留存率是判断产品价值最重要的标准，揭示了产品保留用户的能力</li>
+<li>宏观把握用户生命周期长度及定位产品可改善之处</li>
+</ul>
+<h4 id="分布分析">4、分布分析</h4>
+<p>1）分布分析的定义</p>
+<p>分布分析是用户在特定指标下的频次、总额等的归类展现。它可以展现出单用户对产品的依赖程度，分布客户在不同地区、不同时段所购买的不同类型的产品数量、购买频次等，帮助运营人员了解当前的客户状态，以及客户的运转情况。</p>
+<p>2）分布分析模型的特点与价值</p>
+<ul>
+<li>挖掘用户分布规律，优化产品策略</li>
+<li>运营并持续产品生命力，增加客户回访率</li>
+<li>快速识别核心用户群体，资源配置有的放矢</li>
+</ul>
+<h4 id="点击分析">5、点击分析</h4>
+<p>1）点击分析的定义</p>
+<p>点击分析，即应用一种特殊高亮的颜色形式，显示页面或页面组（结构相同的页面，如商品详情页、官网博客等）区域中不同元素点击密度的图示。包括元素被点击的次数、占比、发生点击的用户列表、按钮的当前与历史内容等因素。</p>
+<p>点击分析采用可视化的设计思想与架构，以简洁直观的操作方式，呈现访客热衷的区域，帮助运营人员或管理者评估网页设计的科学性。</p>
+<p>2）点击分析的特点与价值</p>
+<ul>
+<li>精准评估用户与网站交互背后的深层关系</li>
+<li>实现网页内跳转点击分析，抽丝剥茧般完成网页深层次的点击分析</li>
+<li>与其他分析模型配合，以全面视角探索数据价值，能够深度感知用户体验，实现科学决策</li>
+</ul>
+<h4 id="用户路径">6、用户路径</h4>
+<p>1）用户行为路径的定义</p>
+<p>用户行为路径分析，顾名思义，是用户在APP或网站中的访问行为路径。</p>
+<p>2）用户路径分析模型的价值</p>
+<p>用户路径的分析结果通常以桑基图形式展现，以目标事件为起点或终点，查看后续或前置路径，可以详细查看某个节点事件的流向。</p>
+<ul>
+<li>可视化用户流，全面了解用户整体行为路径</li>
+<li>定位影响转化的主次因素，产品设计的优化与改进有的放矢</li>
+</ul>
+<h4 id="用户分群">7、用户分群</h4>
+<p>1）用户分群的定义</p>
+<p>用户分群即用用户信息标签化，通过用户的历史行为路径、行为特征、偏好等属性，我们将具有相同属性的用户划分为一个群体，并进行后续分析。</p>
+<p>2）用户分群分析的分类与价值</p>
+<p>用户分群通常被分为普通分群和预测分群。普通分群根据用户的属性特征和行为特征将用户群体进行分类，预测分群根据用户以往的行为属性特征，运用机器学习算法来预测他们将来会发生某些事件的概率。</p>
+<ul>
+<li>帮助企业打破数据孤岛并真实了解用户</li>
+<li>定位营销目标群体，帮助企业实现精准、高效营销</li>
+</ul>
+<h4 id="属性分析">8、属性分析</h4>
+<p>1）属性分析的定义</p>
+<p>属性分析是根据用户自身属性对用户进行分类与统计分析。</p>
+<p>2）属性分析模型的价值</p>
+<p>属性分析主要价值体现在丰富用户画像维度，让用户行为洞察粒度更细致。</p>
+<p>数值类型的属性可以将“总和”“均值”“最大值”“最小值”作为分析指标，添加多个维度。</p>
+<p>数字类型的维度可以自定义区间，方便进行更加精细化的分析。</p>
+<h3 id="三指标体系构建">（三）指标体系构建</h3>
+<h4 id="第一关键指标法">1、第一关键指标法</h4>
+<p>第一关键指标法的概念出自《精益数据分析》一书，即在企业发展的每个阶段，都有一个当前阶段高于一切、需要集中全部精力注意的一个数据，这个数据就是<strong>第一关键指标</strong>。</p>
+<ul>
+<li>第一阶段：MVP（Minimium Vialbe Product，最小可用产品）阶段</li>
+</ul>
+<p>在创业的最早期，创始人关注点是确定用户需求，并作出一个最小可用的产品来验证需求的真实性。这一阶段数据分析的价值比较小，企业需要定性分析，如通过大量的用户访谈来确定产品的满足情况。</p>
+<ul>
+<li>第二阶段：增长阶段</li>
+</ul>
+<p>此阶段的企业已经有了成型的产品以及固定的用户群，有丰富的数据可以进行数据分析。</p>
+<p>我们将数据分析细分为关注<strong>留存指标</strong>和关注<strong>引荐指标</strong>两个阶段。在产品推广之前，留存分析直接反映了用户的活跃度，帮助企业证明产品是否给客户带来价值，同时，产品经过不断优化和迭代，企业英冠关注引荐指标。</p>
+<ul>
+<li>第三阶段：营收阶段</li>
+</ul>
+<p>此阶段产品形态已相对成熟，企业的关注点聚焦在如何规模化，并实现快速盈利，关键指标主要是LTV（Life Time Value，生命周期总价值）、CAC（Customer Acquisition Cost，用户获取成本）、渠道分成比例、渠道用户盈利周期等。此时，企业需要寻找新的发展方向，为下一步增长做准备。</p>
+<p>【第一指标法定位了企业当前发展阶段的最重要问题，它关注企业层面的运转健康，有利于让全公司形成合力聚焦同一目标。】</p>
+<h4 id="海盗指标法">2、海盗指标法</h4>
+<p>2007年，500Startups创业孵化器的创始人Dave McClure针对创业公司应用关注的指标，提出了一套模型——Pirate Metrics，即海盗指标法。他将创业公司需要关注的指标归结为5个方面，分别是Acquisition（获取）、Activation（激活）、Retention（留存）、Revenue（营收）、Referral（引荐），简称AARRR。</p>
+<p>【海盗指标法为企业提供了数据分析基础和罗盘，以及指导创业和企业发展的探索方向。】</p>
+<h2 id="三数据驱动产品和运营决策">三、数据驱动产品和运营决策</h2>
+<h3 id="一数据驱动运营监控">（一）数据驱动运营监控</h3>
+<h4 id="用户获取acquisition">1、用户获取（Acquisition）</h4>
+<p>企业市场部通过不同渠道触达用户，好的营销渠道带来的用户与设定的目标人群有很大吻合度，有针对性地圈定了目标人群，坏的营销渠道则相反。作为“花钱大户”的市场部门来说，衡量各渠道的ROI是重中之重。</p>
+<p>相较于线下传统营销渠道，数字营销渠道如官网、微信公众号、EDM（Email Direct Marketing）营销、线下活动等都可以被跟踪和监测。通过用户行为数据分析，运营人员可以科学评估数字营销各渠道的投入产出比，好让市场管理者能够进行渠道追踪，实时把握渠道动态，对市场活动有效性加以计划、执行、监控和分析。</p>
+<h4 id="激活activation">2、激活（Activation）</h4>
+<ul>
+<li>激活的认知两大误区</li>
+</ul>
+<p><strong>误区1：激活意味着用户触达</strong></p>
+<p>用户触达是用户激活的前提，单纯的用户触达没有直接对后续转化带来价值，不能保证留存率。</p>
+<p>归根结底，我们在衡量市场活动效果时，需要以用户激活量来衡量，而非用户触达量。</p>
+<p><strong>误区2：激活意味着注册成功</strong></p>
+<p>新增用户数是产品所关注的用户指标之一，并不能代表激活用户数。</p>
+<p>用户激活，是指新用户真正体验了产品的核心功能。</p>
+<p>激活阶段的目的是实现用户转化，激活是用户留存的前提。</p>
+<ul>
+<li>如何衡量用户激活</li>
+</ul>
+<p>不同企业对“激活”的定义不同，我们将新用户完成核心功能的初步体验称为“激活”。一般而言，互联网金融行业用户绑定一张银行卡，电商用户完成一次购物，视频平台新用户完成了3个视频的播放，才被视为“激活”。</p>
+<ul>
+<li>如何提升用户激活率</li>
+</ul>
+<p>1）减少干扰。运营人员应该考虑到如何让用户先用起来，以后再去补充必要的信息。</p>
+<p>2）提升性能。如果用户打开产品出现卡顿，就不要指望用户的高激活率。</p>
+<p>3）增加引导。当用户接触产品后，要引导用户到最关键的操作步骤上来。</p>
+<p>4）人工接入。对于2B服务来说，用户注册试用后，即显示除了强烈的需求信号，然而产品复杂性需要有专门的咨询顾问对客户进行解答，只有不断为客户解释疑惑，才能让用户真正体验到产品价值。</p>
+<h4 id="留存retention">3、留存（Retention）</h4>
+<p>留存用户量和留存率体现了应用的质量和保留用户的能力。复购率、次日留存、周留存都是与留存相关的指标，企业根据产品和业务特点定制统计指标，以监控用户留存或流失情况，做到关注留存、提升留存和利用留存。</p>
+<ul>
+<li>关注留存：客户获取成本（CAC）小于客户生命周期价值（LTV）</li>
+</ul>
+<p>LTV和CAC是商业模式可行性中不可或缺的两个变量。业界普遍认为，CAC要明显小于LTV才能算平衡的商业模式，在企业服务领域更甚，LTV大于3倍的CAC才算得上企业良性发展。</p>
+<ul>
+<li>提升留存：降低流失率</li>
+</ul>
+<p>1）精准信息推送</p>
+<p>企业运营人员应事先根据用户行为进行用户画像，勾勒某用户群体在特定研究范围内的行为全貌，将具有类似属性与行为特点的群体“圈”出来，再对目标人群进行精确的信息推送，以刺激用户留存。</p>
+<p>2）运营Magic Number</p>
+<p>我们提升留存的思路，不要局限在如何让已有的用户更活跃，而是让新来的用户尽快地进入最佳的体验状态。</p>
+<p>3）流失用户挽回</p>
+<p>用户流失原因有很多种，我们可以有针对性地挽回用户。告知用户的渠道很多，其中精准推送是挽回流失用户的策略之一。</p>
+<ul>
+<li>利用留存：读懂用户留存，最大限度延长用户生命周期</li>
+</ul>
+<p>企业要尝试读懂你的用户留存，可通过日留存率、周留存率、月留存率等指标监控应用的用户流失情况，关注用户留存变化与留存规律，并在用户流失前提前采取相应措施，激励这些用户继续使用。</p>
+<h4 id="引荐referral">4、引荐（Referral）</h4>
+<ul>
+<li>并非所有的产品都适合病毒营销，要回归价值</li>
+</ul>
+<p>病毒营销对于一款产品的增长很重要，但绝大多数产品并不具有网络性质。无论是企业产品、市场、还是运营工作，最终都要回归产品的本质。</p>
+<ul>
+<li>留存率不代表用户忠诚度高</li>
+</ul>
+<p>留存与利润相关，但留存与新用户增长率直接关联度较弱，它不能真正衡量出用户的忠实行为。用户可能是因为昂贵的转移成本，不得已房企其他产品，而被迫停留在你家产品上。</p>
+<ul>
+<li>关注NPS，用户会主动推荐你的产品吗</li>
+</ul>
+<p>用户忠诚度是区分“良性利润”与“不良利润”的指标。不良利润是以恶化客户关系为代价赚取的利润，这种商业模式会造成用户流失并转向竞品，甚至会阻止身边其他人使用；而“良性利润”真正践行“以用户为中心”，会提升企业口碑，促成用户向周围人推荐，促进产品可持续增长。</p>
+<h4 id="营收revenue">5、营收（Revenue）</h4>
+<p>任何一家企业的最终目的都是为了盈利，这一点毋庸置疑。烧钱可能会维持公司发展一段时间，但最终要实现的是正增长。因此，企业十分关注付费转化率、销售额、平均客单价、新增付费用户数等指标。</p>
+<h3 id="二数据驱动产品改进和体验优化">（二）数据驱动产品改进和体验优化</h3>
+<p>产品生命周期经历了诞生、成长到成熟，最终走向衰亡的过程。企业为延长此过程，需要对产品不断地进行优化和改进。</p>
+<p>当一项新的产品功能上线后，后续工作并不是一股脑地继续开发新功能，而是要阶段性地停下来用数据评估新功能是否达到了预期效果。通过数据找到薄弱环节或者不合理的环节，持续将产品正向迭代。</p>
+<h3 id="三数据驱动商业决策">（三）数据驱动商业决策</h3>
+<ul>
+<li>透过现象看本质，提升企业决策的准确性与科学性</li>
+</ul>
+<p>大数据时代改变了曾经仅依靠企业内部业务数据优化决策的情况，通过洞察“大”、“全”、“细”、“时”数据背后的价值，赋予企业更加全面和准确的商业洞察力，大幅提升企业的商业决策水平，降低企业经营的风险。</p>
+<ul>
+<li>用数据说话，降低企业沟通成本</li>
+</ul>
+<p>“用数据说话”终止了企业团队间因某一结果无休止争论的局面，降低了团队的沟通成本，缩短了企业研发时间。</p>
+<ul>
+<li>赋予企业全面精准的商业洞察力，实现智能商业预测</li>
+</ul>
+<p>除了提升企业的商业决策水平之外，数据驱动商业决策还赋予企业商业预测的能力。大数据分析像一架望远镜，企业通过望远镜能够看到未来可能会发生的情况。智能商业预测帮助企业率先进一步挖掘市场，实现产品与服务上的创新，在诡谲多变的市场环境中取得先发优势。</p>
+<h2 id="四数据驱动产品智能">四、数据驱动产品智能</h2>
+<h3 id="一数据平台及用户智能">（一）数据平台及用户智能</h3>
+<h4 id="为什么需要数据平台">1、为什么需要数据平台</h4>
+<p>虽然产品功能是易变且难以预测的，但是所有这些基于数据的功能依然会有很多共同点，尤其是它们对于底层基础数据的处理和访问的需求，基本上是稳定不变的。</p>
+<p>针对这一部分的需求，我们可以抽象出一个比较通用的数据平台，以减少不同数据应用中的重复数据处理过程，让不同的数据应用更专注于业务相关需求的实现，不用纠结于数据从哪来、数据如何访问等重复枯燥的问题。</p>
+<h4 id="数据平台提供的能力">2、数据平台提供的能力</h4>
+<p>为了支撑多种多样的数据应用，一个数据平台需要具备对数据的灵活处理能力，包括接收、清晰、存储、计算、查询等，整个过程中既要足够高效，又要考虑通用性。</p>
+<p>1）数据接收</p>
+<p>用户行为数据是一个天然的实时数据流，因此在数据接收层面，必须要提供可靠、实时接收的能力。无论采集端以什么方式进行，最终都应当使用统一的接口将数据发送到数据接收层。</p>
+<p>接收层通常不需要复杂的处理逻辑，更重要的是保证接收服务的可靠性以及可扩展性，在面对突发性的流量增长时不会造成数据丢失。</p>
+<p>2）实时订阅</p>
+<p>数据到达接收层之后，会被立即写入一个消息队列中，以对下游提供订阅服务。这里基本上没有任何额外的处理逻辑，因此延时是非常低的。</p>
+<p>需要注意的是，这个阶段的数据没有经过任何数据清洗的，因此可能会存在大量的非法数据。使用这些数据的下游应用应当具备处理非法数据的能力，或者能忍受非法数据导致的干扰。</p>
+<p>3）数据清洗</p>
+<p>通常来说，除非是能100%确定的非法数据，例如没有通过基本的格式校验，否则数据清洗并不会真的完全过滤数据，而是通过对数据附加一系列的标签来标注数据是否非法，例如是否搜索引擎、是否黑名单IP等。</p>
+<p>由于实时数据清洗的局限性，多数场景下我们还需要定期进行离线的数据清洗，以便进一步标记出非法数据，提高数据准确性。和实时清洗类似，离线数据清洗依然采用标签的方式进行，这些标签可以复用。</p>
+<p>4）数据存储</p>
+<p>通常一个数据平台的存储体系都是多个组件相结合，例如以HDFS来提供高吞吐的基础存储，以HBase来提供随机更新和查询的能力。</p>
+<p>5）数据计算</p>
+<p>一个数据平台通常应该具有多种计算能力，例如提供以MapReduce、Spark为代表的批量计算框架，以及以Storm、Spark Streaming为代表的流式计算框架。</p>
+<p>6）API查询</p>
+<p>对于常见的查询场景，数据平台通常还需要提供一套查询API，把底层的查询能力进行封装。</p>
+<p>7）SQL查询</p>
+<p>由于用户行为数据的数据量通常是非常大的，不建议专门针对SQL访问的需求单独进行数据存储，以免导致不必要的计算和存储成本。更合适的方式是基于已有的数据存储，配合合适的SQL查询引擎，直接进行数据查询。</p>
+<h3 id="二数据应用与用户智能">（二）数据应用与用户智能</h3>
+<h4 id="基于用户行为数据的用户智能应用">1、基于用户行为数据的用户智能应用</h4>
+<table>
+<thead>
+<tr class="header">
+<th align="left">应用类型</th>
+<th>解决的问题</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">用户画像</td>
+<td>描绘目标用户到底是一个什么样的人——目标用户的属性、行为与期待等</td>
+</tr>
+<tr class="even">
+<td align="left">个性化推荐</td>
+<td>基于用户画像、短期兴趣、长期爱好，向用户推荐喜欢的内容</td>
+</tr>
+<tr class="odd">
+<td align="left">精准广告推荐</td>
+<td>根据用户以往的浏览和购买等行为，向用户展现最有可能感兴趣的广告</td>
+</tr>
+<tr class="even">
+<td align="left">精准用户运营</td>
+<td>根据用户以往的浏览和购买等行为，想用户推送最优可能转化的优惠券等</td>
+</tr>
+<tr class="odd">
+<td align="left">反作弊分析</td>
+<td>判断用户是否是一个“作弊”用户</td>
+</tr>
+<tr class="even">
+<td align="left">搜索引擎点击模型</td>
+<td>基于海量用户检索的点击行为，调整检索结果中高频点击项的排序</td>
+</tr>
+<tr class="odd">
+<td align="left">智能评价系统</td>
+<td>自动从用户评价中，抽取关键字及情绪化文字，如“大屏幕”、“超长待机”等</td>
+</tr>
+<tr class="even">
+<td align="left">流失用户预警</td>
+<td>提前预警用户潜在的流失倾向，提供优惠券、促销活动，延长用户生命周期</td>
+</tr>
+<tr class="odd">
+<td align="left">导航行程时间预估</td>
+<td>根据天气情况、实时路况信息、海量用户历史行程记录，预测导航行程时间</td>
+</tr>
+</tbody>
+</table>
+<h4 id="用户智能分类基于规则与机器学习">2、用户智能分类：基于规则与机器学习</h4>
+<ul>
+<li>基于规则的用户智能应用</li>
+</ul>
+<p>在保证整个数据流玩呗的情况下，只要基于行业和领域的经验与专家知识基本规则，就能取得比较好的效果。筛选规则可根据运营需求的精细化不停地添加，直到筛选出符合需求的那些用户群体，随后对他们进行推送。</p>
+<ul>
+<li>基于机器学习的用户智能</li>
+</ul>
+<p>回归算法、分类算法、聚类算法、关联分析等</p>
+<h3 id="三用户智能应用用户画像">（三）用户智能应用——用户画像</h3>
+<h4 id="两种用户画像user-persona-与-user-profile">1、两种用户画像：User Persona 与 User Profile</h4>
+<ul>
+<li>User Persona：是产品设计、运营人员从用户群体中抽象出来的典型用户。</li>
+</ul>
+<p>这类用户画像本质上是一个用来描述用户需求的方法论。它可以帮助不同角色在产品研发过程中，从用户的角度思考问题。在产品设计阶段和原型开发阶段，产品经理会较多地借助用户画像理解用户需求，想象用户使用的场景。</p>
+<ul>
+<li>User Profile：根据每个人在产品中的用户行为数据，产出描述用户的标签的集合。</li>
+</ul>
+<p>这类用户画像主要是基于真实积累的用户行为，结合具体的业务场景产生的一系列标签，这些标签共同构成了对于一个用户的真实描述。</p>
+<h4 id="用户画像user-profile标签体系的建立">2、用户画像（User Profile）标签体系的建立</h4>
+<p>所谓用户画像中的标签体系，简单来说就是将用户划分到多个不同的分类之中。用户落入的这些分类都是什么，彼此之间有何联系，就构成了一个标签体系。</p>
+<p>一般来讲，有两种常见的思路设计用户画像的标签体系。</p>
+<p>一类是结构化的标签体系，这类标签可以直接从人口属性、物品信息等基本信息中直接得到，有明确的层级关系，如性别、省市、视频分类、商品分类等。</p>
+<p>另一种是非结构化标签体系，就是各个标签各自反映各自的用户兴趣，彼此之间并无层级关系。典型的非结构化的标签，如搜索广告系统中的关键词，或者文档主题模型。</p>
+<p>标签体系的建设本身医药便于使用、二要有明显的区分度。有效的标签体系，要能反映用户决定买什么、不买什么的逻辑与依据。</p>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -195,16 +542,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/10/30/Reading-Notes-03/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/10/30/Reading-Notes-03/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2018/09/03/Reading-Notes-02/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">动态思考战略：《战略节奏》读书笔记</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -224,564 +630,14 @@
 
 
 
-
   
-    <article id="post-Reading-Notes-02" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/03/Reading-Notes-02/">动态思考战略：《战略节奏》读书笔记</a>
-    </h1>
   
 
-        
-        <a href="/2018/09/03/Reading-Notes-02/" class="archive-article-date">
-  	<time datetime="2018-09-03T13:16:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>《战略节奏》 朱恒源 杨斌等著. 机械工业出版社 2018</p>
-<p>这是读的第一本系统性的战略研究方面的书籍，收获颇丰。</p>
-<p>整个书的内容结构清晰，逻辑性强，推荐阅读。</p>
-<p>下面是这本书的读书笔记。</p>
-        
-          <a class="article-more-a" href="/2018/09/03/Reading-Notes-02/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">raeding notes</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/03/Reading-Notes-02/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Reading-Notes-01" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/19/Reading-Notes-01/">批判性思维入门：《学会提问》读书笔记</a>
-    </h1>
   
 
-        
-        <a href="/2018/08/19/Reading-Notes-01/" class="archive-article-date">
-  	<time datetime="2018-08-19T06:30:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>《学会提问》尼尔·布朗 斯图尔特·基利著 吴礼敬译. 机械工业出版社 2012</p>
-<p>批判性思维的入门经典书目。图书馆一直借不到，就自己买了一本。</p>
-<p>读完之后，低于预期，篇幅有点过于冗长，翻译的质量也不好。</p>
-<p>但是，收获还是有一些的。下面是这本书的一个读书笔记。</p>
-        
-          <a class="article-more-a" href="/2018/08/19/Reading-Notes-01/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">reading notes</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/08/19/Reading-Notes-01/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hadoop-learning-01" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/06/hadoop-learning-01/">Hadoop初体验之wordcount</a>
-    </h1>
   
 
-        
-        <a href="/2018/05/06/hadoop-learning-01/" class="archive-article-date">
-  	<time datetime="2018-05-06T13:57:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>这是第一篇，Hadoop初体验，主要介绍了相关知识点，以及一个入门的案例——wordcount，以及在案例操作过程中遇到的问题及解决办法。</p>
-        
-          <a class="article-more-a" href="/2018/05/06/hadoop-learning-01/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">hadoop</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/06/hadoop-learning-01/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Time-Series-IV" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/15/Time-Series-IV/">Time Series (IV)</a>
-    </h1>
-  
-
-        
-        <a href="/2018/04/15/Time-Series-IV/" class="archive-article-date">
-  	<time datetime="2018-04-14T17:16:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>这是时间序列的第四章，主要介绍的是时间序列的模型构造步骤，以ARIMA模型为例，介绍了一个简单的案例。</p>
-<p>同时，本时间序列这个专题内容已经全部写完。</p>
-        
-          <a class="article-more-a" href="/2018/04/15/Time-Series-IV/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Time Series</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Data Analysis</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/04/15/Time-Series-IV/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Time-Series-III" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/15/Time-Series-III/">Time Series (III)</a>
-    </h1>
-  
-
-        
-        <a href="/2018/04/15/Time-Series-III/" class="archive-article-date">
-  	<time datetime="2018-04-14T16:25:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>这是时间序列的第三章，主要介绍的是时间序列的模型，以ARIMA为主，顺带也提及了一下ARCH模型和GARCH模型。</p>
-        
-          <a class="article-more-a" href="/2018/04/15/Time-Series-III/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Time Series</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Data Analysis</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/04/15/Time-Series-III/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Time-Series-II" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/14/Time-Series-II/">Time Series (II)</a>
-    </h1>
-  
-
-        
-        <a href="/2018/04/14/Time-Series-II/" class="archive-article-date">
-  	<time datetime="2018-04-14T15:57:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>这是时间序列的第二章，主要介绍的是时间序列的一个重要的问题：平稳性。</p>
-        
-          <a class="article-more-a" href="/2018/04/14/Time-Series-II/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Time Series</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Data Analysis</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/04/14/Time-Series-II/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Time-Series-I" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/11/Time-Series-I/">Time Series (I)</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/11/Time-Series-I/" class="archive-article-date">
-  	<time datetime="2018-03-11T14:37:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>因为工作的需要，最近重新复习了一下Time Series的相关知识，主要是对ARIMA模型的相关知识点回顾，整片内容偏基础，可以作为学习笔记用于知识的复习。</p>
-<p>下面是第一章，主要介绍了时间序列的定义，时间序列的数据特征。</p>
-        
-          <a class="article-more-a" href="/2018/03/11/Time-Series-I/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Time Series</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Data Analysis</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/11/Time-Series-I/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
 
 
@@ -804,8 +660,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
